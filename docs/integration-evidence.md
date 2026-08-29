@@ -216,3 +216,22 @@ The 90 cm revision returned `LOCKED_ITEM_CONFLICT`, displayed two relaxation
 options, and left the scene byte-for-byte unchanged. No browser errors occurred.
 
 ![US constraint shock with one return, one replacement, and locked keyboard](evidence/constraint-shock.png)
+
+## Item 10 — exact deterministic review and cart fallback
+
+With no participant development store available, the deployed review path is
+explicitly deterministic. It reviewed five exact scene lines totaling
+`USD 278.00`, preserved one unrelated Walnut headphone stand, and reconciled a
+six-line deterministic cart totaling `USD 307.00` after one approval.
+
+Verification covered review invalidation after a simulated price change,
+one rejected audio line, accepted-only cart receipts, partial reconciliation,
+consumed-approval reuse rejection, and exact retry. Shopify Checkout remained
+disabled in both partial and exact fallback states with a credential disclosure.
+
+The separate Shopify-native `add_to_cart` probe remained protected by the Item 3
+gate: it returned `Human approval is required for these exact cart lines`, and
+live Shopify cart state was unchanged. No participant-store or checkout claim is
+made.
+
+![Exact scene review beside the reconciled deterministic cart](evidence/deterministic-review-cart.png)

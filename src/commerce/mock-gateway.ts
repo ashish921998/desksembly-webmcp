@@ -11,8 +11,20 @@ export class MockCommerceGateway implements CommerceGateway {
   readonly mode = "deterministic-demo" as const;
   readonly label = "Deterministic demo commerce — not a Shopify cart";
   private readonly quantities = new Map<string, number>();
+  private readonly rejectedIds: ReadonlySet<string>;
 
-  constructor(private readonly products: readonly ProductVariantRef[] = MOCK_DESK_PRODUCTS) {}
+  constructor(
+    private readonly products: readonly ProductVariantRef[] = MOCK_DESK_PRODUCTS,
+    options?: {
+      initialLines?: CartMutationLine[];
+      rejectMerchandiseIds?: string[];
+    },
+  ) {
+    for (const line of options?.initialLines ?? []) {
+      this.quantities.set(line.merchandiseId, line.quantity);
+    }
+    this.rejectedIds = new Set(options?.rejectMerchandiseIds ?? []);
+  }
 
   async getProductsByMerchandiseIds(
     ids: string[],
@@ -65,7 +77,10 @@ export class MockCommerceGateway implements CommerceGateway {
         rejected.push({ ...line, code: "UNAVAILABLE_VARIANT", message: "Variant unavailable." });
         continue;
       }
-      if (line.merchandiseId === MOCK_PARTIAL_FAILURE_MERCHANDISE_ID) {
+      if (
+        line.merchandiseId === MOCK_PARTIAL_FAILURE_MERCHANDISE_ID ||
+        this.rejectedIds.has(line.merchandiseId)
+      ) {
         rejected.push({ ...line, code: "CART_PARTIAL_FAILURE", message: "Fixture rejection." });
         continue;
       }

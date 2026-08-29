@@ -20,8 +20,15 @@ import { useWorldAnimation } from "@/src/world/animation/use-world-animation";
 import { StarterPrompt } from "@/src/experience/StarterPrompt";
 import { ActivityRibbon } from "@/src/experience/ActivityRibbon";
 import { ConstraintShockPanel } from "@/src/experience/ConstraintShockPanel";
+import type { SceneItem } from "@/src/domain/types";
 
 const manualGateway = new MockCommerceGateway();
+
+function itemDisplayStatus(item: SceneItem) {
+  if (item.status === "carted") return "Carted";
+  if (item.status === "error") return "Cart error";
+  return item.locked ? "Locked" : "Editable";
+}
 
 export function ManualDeskExperience() {
   const state = useSceneState();
@@ -212,7 +219,7 @@ export function ManualDeskExperience() {
               <dl>
                 <div><dt>Anchor</dt><dd>{selected.anchorId}</dd></div>
                 <div><dt>Owner</dt><dd>{selected.owner}</dd></div>
-                <div><dt>Status</dt><dd>{selected.locked ? "Locked" : "Editable"}</dd></div>
+                <div><dt>Status</dt><dd>{itemDisplayStatus(selected)}</dd></div>
               </dl>
               <div className="world-inspector__actions">
                 <button onClick={toggleLock}>{selected.locked ? "Unlock product" : "Lock product"}</button>
@@ -258,7 +265,7 @@ export function ManualDeskExperience() {
                 }}
               >
                 <strong>{item.variant.title}</strong>
-                <span>{item.anchorId} · {item.locked ? "Locked" : "Editable"}</span>
+                <span>{item.anchorId} · {itemDisplayStatus(item)}</span>
               </button>
             </li>
           ))}

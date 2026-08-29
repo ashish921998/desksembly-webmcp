@@ -4,6 +4,7 @@ import { CartGatePanel } from "@/src/review/CartGatePanel";
 import { DemoModeBanner } from "@/src/experience/DemoModeBanner";
 import { getStoreDomain } from "@/src/commerce/shopify-config";
 import { ManualDeskExperience } from "@/src/experience/ManualDeskExperience";
+import { SceneReviewPanel } from "@/src/review/SceneReviewPanel";
 
 export default function Home() {
   const deterministicCommerce = getStoreDomain() === "mock.shop";
@@ -35,6 +36,7 @@ export default function Home() {
       </section>
 
       <ManualDeskExperience />
+      <SceneReviewPanel />
       <CartGatePanel />
     </main>
   );

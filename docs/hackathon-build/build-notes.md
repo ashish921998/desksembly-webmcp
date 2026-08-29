@@ -170,3 +170,18 @@
 - E2E verifies the keyboard human lock, old-version `STALE_SCENE`, exact preserved IDs, only the Terracotta plant leaving, Felt coaster arrival, final $275 total, and the 90 cm badge. It also verifies a locked wide-display conflict, two suggestions, and an unchanged stable world.
 - Live target-browser verification reproduced scene versions `2 → 3 → 5`, returned one item, staged one replacement, preserved the locked keyboard, and produced no console errors. The locked wide-display failure left the serialized scene unchanged.
 - Verified the full 26-test Vitest suite, 4 E2E journeys, 6 evals, typecheck, lint, production build, and final Vercel deployment. Visual evidence is saved at `docs/evidence/constraint-shock.png`.
+
+## Active shaping — deterministic cart fallback
+
+- Ashish confirmed that a Shopify development store is not available.
+- Item 10 is therefore explicitly scoped to an exact deterministic cart reconciliation using the same domain review and one-time approval boundaries. Shopify Checkout stays disabled and the submission must not claim participant-store cart proof.
+- The earlier `mock.shop` Standard Actions spike remains valid evidence that the native Shopify cart gate can reject unapproved calls and delegate an approved Shopify-hosted test line, but it is not presented as the desk scene's exact cart.
+
+## Build — Item 10
+
+- Added an exact scene ReviewPanel with every product, variant, quantity, price, total, scene version, deterministic-cart disclosure, and one approval action.
+- Added price-change invalidation, one-time domain approval consumption, deterministic cart reconciliation, accepted-only cart activity, carted/error scene statuses, partial-failure disclosure, preservation of an unrelated existing line, and an always-disabled Shopify Checkout control with the missing-store explanation.
+- Extended `MockCommerceGateway` with injectable existing lines and rejected IDs so success and partial paths use the same contract rather than UI-only fakes.
+- E2E verifies stale review rejection after a USD 45 speaker price change, five reviewed lines, partial rejection, accepted-only animation, consumed approval reuse failure, exact retry, six-line cart with unrelated Walnut stand, USD 307 total, carted scene statuses, and disabled checkout.
+- Live target-browser verification reconciled the exact five-line USD 278 scene into the six-line deterministic cart, kept checkout disabled, and separately proved an unapproved native Shopify `add_to_cart` call still fails without changing Shopify cart state.
+- Verified the full 26-test Vitest suite, all 5 E2E journeys, typecheck, lint, production build, and Vercel deployment. Visual evidence is saved at `docs/evidence/deterministic-review-cart.png`.

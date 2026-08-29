@@ -195,6 +195,23 @@ class WorldAnimationController implements SceneAnimationPort {
     this.activeController?.abort();
   }
 
+  async cart(items: SceneItem[]) {
+    for (const item of items) {
+      const receipt: AnimationReceipt = {
+        id: `cart-${item.id}-${Date.now()}`,
+        label: `Cart ${item.variant.title}`,
+        status: "pending",
+      };
+      patchState({ receipts: [...animationStore.getState().receipts, receipt] });
+      await runTimeline({
+        signal: new AbortController().signal,
+        duration: sceneStore.getState().reducedMotion ? 0.015 : 0.12,
+        steps: [() => undefined],
+      });
+      finishReceipt(receipt.id, "success");
+    }
+  }
+
   reset() {
     this.cancel();
     patchState({
