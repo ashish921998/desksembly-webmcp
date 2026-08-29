@@ -92,3 +92,11 @@
 - Integration finding: Shopify's default `openCart` navigates this minimal headless shell to `/cart`. The spike therefore opens its own result drawer after the action resolves so review/cart reconciliation remains visible. The actual cart remains Shopify-owned.
 - No participant development-store credentials are present. The page and evidence label `mock.shop` accurately; do not present this as a participant-store cart until credentials are connected.
 - Sanitized live results and the visual ledger are recorded in `docs/integration-evidence.md` and `docs/evidence/cart-gate-approved.png`.
+
+## Verification follow-up — Visual Pause 1
+
+- At Ashish's request, reran the complete Item 1–3 matrix instead of relying on the earlier per-item checks.
+- The first aggregate run found that Vitest was collecting the Playwright specification. The Playwright test itself passed in its proper runner, but `npm test -- --run` failed because the two runner APIs were mixed.
+- Updated `vitest.config.ts` to exclude `tests/e2e/**` while preserving Vitest's default exclusions.
+- Reran typecheck, the aggregate Vitest suite, integration tests, Playwright E2E, lint, and production build with fail-fast execution. All passed: 5 Vitest tests, 4 integration assertions, and 1 Playwright journey.
+- Rechecked `https://devp-one.vercel.app`: HTTPS 200, origin-keying and HSTS headers present, `deskbuilder.echo` successful, authoritative Shopify cart unchanged across an unapproved call, `REVIEW_REQUIRED` visible, and no browser console errors.
