@@ -207,3 +207,6 @@
 - Fetched the live official submission requirements, judging criteria, and key dates. Requirements are complete: working live URL, explanatory text, public repository with detectable open-source license, and a public YouTube demo under three minutes with audio. The local narrated draft is ready; YouTube upload remains an explicit `$prepare-submission` action.
 - Verified the branded package with typecheck, all 30 Vitest tests, lint, production build, and complete decode of the 29.96-second H.264/AAC demo.
 - Updated learning state to completed while keeping the top-level stage at Resources; the next command is `prepare-submission`.
+- Pushed final `main` to the public repository and verified signed-out HTTP 200 responses for the repository, root MIT license, and narrated MP4. GitHub detected the MIT license in repository metadata.
+- Cloned the public HTTPS repository into a fresh temporary directory; `npm ci`, pre-build typecheck, and production build all passed from the public source.
+- Deployed the final branded build and verified `Desksembly` metadata/heading, exactly five project tools, and zero application browser errors.

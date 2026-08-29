@@ -257,3 +257,15 @@ five project tools, completed a reduced-motion five-item replay, rendered at
 The record-only narrated demo draft is `docs/evidence/demo-draft.mp4`: H.264
 video plus AAC audio, 1280×720, 29.96 seconds, 676,061 bytes. It explicitly
 states that the cart is deterministic and Shopify Checkout is disabled.
+
+## Item 12 — public handoff verification
+
+- Public repository: <https://github.com/ashish921998/desksembly-webmcp>
+- Repository, raw MIT license, and raw narrated MP4 returned signed-out HTTP 200.
+- GitHub repository metadata detected `MIT License`.
+- A fresh public HTTPS clone passed `npm ci`, typecheck before first build, and
+  production build.
+- The final Vercel deployment rendered the `Desksembly` heading and metadata,
+  exposed exactly five `deskbuilder.*` tools, and logged no browser errors.
+- Public YouTube upload remains intentionally deferred to `$prepare-submission`,
+  as required by the official Devpost submission format.
