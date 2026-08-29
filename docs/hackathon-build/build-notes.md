@@ -128,3 +128,13 @@
 - A live in-app browser visual check caught and corrected inherited anchor heights that initially left products floating. The corrected anchors place every primitive on the desk surface.
 - Manually verified the pointer flow by dragging the Paperframe monitor card from `display-center` to `display-wide`; the list and scene version updated together. Playwright verified the keyboard/manual flow, lock/unlock, valid and invalid movement, removal, accessible names, 390×844 layout, and no horizontal overflow.
 - Verified `npm run test:e2e -- manual-world` (2 journeys passing), typecheck, lint, and production build. Current Three.js emits upstream deprecation warnings for its clock/shadow implementation, but no application errors occur.
+
+## Build — Item 7
+
+- Registered the five exact production names: `deskbuilder.get_scene`, `deskbuilder.preview_plan`, `deskbuilder.stage_plan`, `deskbuilder.move_product`, and `deskbuilder.get_review`. Shopify retains sole ownership of catalog, cart, and checkout tools.
+- Added Zod-derived strict JSON Schemas, behavior-matched annotations, compact results, fresh Zustand reads, safe typed failures, reason sanitization, request cancellation propagation, double-animation-frame visible-state completion, collision audit, and AbortController cleanup.
+- Added integration coverage for registration/cleanup, malformed input, adversarial reason text, stale staging, all five adapters, exact annotations/names, and the complete preview → stage → move → review sequence.
+- Added the direct prompt eval for “Show me the current desk world,” asserting `get_scene` and the five-tool scene-only boundary.
+- The first live preview exposed a misleading current-scene total in the result even though validation used the proposal total. Corrected the adapter to report locked-plus-proposed prices and added a regression assertion for INR 23,096.
+- Deployed and manually invoked every project tool in the Codex in-app browser, including malformed and stale cases. The final live sequence advanced versions `0 → 1 → 2 → 3`, produced four exact review lines, retained Shopify native tools, and logged no browser errors.
+- Verified `npm run test:integration -- webmcp-tools` (10 integration tests), `npm run test:evals -- direct` (2 evals), typecheck, lint, and production build.

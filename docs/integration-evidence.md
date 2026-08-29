@@ -115,3 +115,29 @@ The configured cart event promise settled, the visible proof drawer reconciled
 to the action result, and the browser console contained no errors.
 
 ![Approved Shopify cart and the full gate receipt ledger](evidence/cart-gate-approved.png)
+
+## Item 7 — production deskbuilder tool registry
+
+The deployed page exposed exactly these five project-owned tools alongside the
+unchanged Shopify native family:
+
+```text
+deskbuilder.get_scene
+deskbuilder.preview_plan
+deskbuilder.stage_plan
+deskbuilder.move_product
+deskbuilder.get_review
+```
+
+Live target-browser execution verified:
+
+- `get_scene`: version `0`, locked orange lamp, six available anchors;
+- malformed `preview_plan`: safe `INVALID_INPUT` result;
+- valid `preview_plan`: version `1`, three accepted placements, INR `23096.00`;
+- stale `stage_plan`: safe retryable `STALE_SCENE` result;
+- valid `stage_plan`: version `2`, three confirmed products;
+- `move_product`: display moved to `display-wide`, version `3`;
+- `get_review`: four exact lines and stable review digest.
+
+No duplicate names or browser console errors were present. The tool inventory
+contains no project-owned catalog, cart, or checkout aliases.

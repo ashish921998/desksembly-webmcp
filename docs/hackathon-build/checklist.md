@@ -60,7 +60,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
   Acceptance: The initial world is empty except for a visibly locked orange lamp; a user can inspect, drag, lock, unlock, and remove supported items; invalid placements explain and return; list view exposes the same products/status; laptop flow is complete and mobile is viewable; no WebMCP or cart behavior is required for this item.
   Verify: Run `npm run test:e2e -- manual-world`; complete keyboard-only and pointer flows; check reduced viewport and accessible names; run `npm run build`; commit as `feat: build manual miniature desk`.
 
-- [ ] **7. Register the five audited deskbuilder WebMCP tools**
+- [x] **7. Register the five audited deskbuilder WebMCP tools**
   Spec ref: `spec.md > WebMCP Integration`, all `Tool contract` subsections
   What to build: Implement the production registry and adapters for `deskbuilder.get_scene`, `deskbuilder.preview_plan`, `deskbuilder.stage_plan`, `deskbuilder.move_product`, and `deskbuilder.get_review`; use exact schemas, annotations, project prefixes, AbortSignals, compact results, fresh `sceneStore.getState()` reads, Zod validation, safe errors, and tool audit. Preserve Shopify native tool ownership of catalog/cart/checkout.
   Acceptance: Tool names and descriptions are unambiguous; read-only/untrusted hints match behavior; malformed inputs fail; preview/stage/move require current versions; product reason text cannot execute instructions; callbacks resolve only after visible state is stable; registration cleans up; target agent selects correct tool families for direct prompts.
