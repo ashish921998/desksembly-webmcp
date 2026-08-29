@@ -1,10 +1,20 @@
-# WebMCP miniature desk-setup builder
+# Desksembly
+
+**An agent-ready desk, assembled in front of you.**
 
 A proof-of-concept Shopify storefront where a shopper and a compatible browser
 agent shape one directly manipulable miniature desk world. WebMCP exposes five
 scene-owned tools; Shopify retains its native catalog, cart, and checkout tools.
 
 Live proof of concept: <https://devp-one.vercel.app>
+
+Public source: <https://github.com/ashish921998/desksembly-webmcp>
+
+Public demo draft: [29.96-second narrated MP4](docs/evidence/demo-draft.mp4)
+
+![A parcel opening inside the miniature desk world](docs/evidence/animated-stage.png)
+
+![The US constraint shock preserving a locked keyboard](docs/evidence/constraint-shock.png)
 
 ## Current proof
 

@@ -195,3 +195,15 @@
 - Final production smoke passed HTTPS/HSTS/origin-keying, exact five-tool inventory, fallback disclosure, reduced-motion five-item replay, 390 px layout without overflow, no browser errors, no client token sentinel, and no third-party 3D assets.
 - Used the feature-video record-only path because the repository has no Git remote or PR. Generated `docs/evidence/demo-draft.mp4` from the verified milestone captures with concise system narration: 29.96 seconds, 1280×720 H.264, AAC audio, 676 KB.
 - Deployed the hardened build to `https://devp-one.vercel.app` and froze feature work for handoff preparation.
+
+## Build — Item 12
+
+- Ashish selected **Desksembly** after name research; active products already used DeskDrop and ParcelDesk, while Desksembly had no obvious conflicting product result. Tagline: “An agent-ready desk, assembled in front of you.”
+- Applied Desksembly to package identity, page metadata, hero copy, scope, README, durable Devpost state, and handoff materials.
+- Created the public GitHub repository at `https://github.com/ashish921998/desksembly-webmcp`, set the live Vercel homepage and project description, and retained the root MIT license and third-party notices.
+- Expanded README with architecture, limitations, setup, verification, supported demo, screenshots, live URL, public source, narrated video draft, exact new work, and licensing.
+- Added `docs/hackathon-build/devpost-handoff.md` with the full submission story, WebMCP leverage, UX, human-agent collaboration, implementation, accomplishments, learning, next steps, built-with list, Codex use, judge instructions, fallback disclosure, official requirement mapping, judging alignment, and draft custom-field answers without inventing participant-specific responses.
+- Added `docs/demo-script.md` with the 90-second judge flow and all recording assets.
+- Fetched the live official submission requirements, judging criteria, and key dates. Requirements are complete: working live URL, explanatory text, public repository with detectable open-source license, and a public YouTube demo under three minutes with audio. The local narrated draft is ready; YouTube upload remains an explicit `$prepare-submission` action.
+- Verified the branded package with typecheck, all 30 Vitest tests, lint, production build, and complete decode of the 29.96-second H.264/AAC demo.
+- Updated learning state to completed while keeping the top-level stage at Resources; the next command is `prepare-submission`.

@@ -9,14 +9,14 @@
     "source": "known"
   },
   "participant": {
-    "name": "",
+    "name": "Desksembly",
     "display_name": "Ashish Huddar"
   },
   "project": {
     "name": "",
     "summary": "A Shopify-backed miniature desk-setup builder where a shopper and their browser agent use WebMCP to select and arrange products, revise the scene around human choices and live constraints, and commit the reviewed setup to a real Shopify cart.",
-    "ai_usage": "",
-    "codex_usage": ""
+    "ai_usage": "The deployed app hosts no model API. It relies on a compatible browser agent to compose Shopify native tools with five site-owned WebMCP scene tools; deterministic validation remains the source of scene truth.",
+    "codex_usage": "OpenAI Codex supported research, product planning, architecture review, implementation, debugging, automated tests, live browser verification, deployment, evidence capture, and handoff drafting."
   },
   "current_stage": "resources",
   "completed_stages": [
@@ -26,21 +26,22 @@
   ],
   "rules_acknowledged": true,
   "learning": {
-    "status": "active",
+    "status": "completed",
     "current_step": "build",
     "completed_steps": [
       "onboard",
       "scope",
       "prd",
       "spec",
-      "checklist"
+      "checklist",
+      "build"
     ],
     "plan_file": "docs/hackathon-build/scope.md",
     "checklist_file": "docs/hackathon-build/checklist.md"
   },
   "submission": {
-    "draft_file": "devpost-submission.md",
+    "draft_file": "docs/hackathon-build/devpost-handoff.md",
     "status": "not-started"
   },
-  "next_command": "build-project"
+  "next_command": "prepare-submission"
 }

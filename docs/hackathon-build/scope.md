@@ -1,9 +1,9 @@
 # Project Scope
 
-## Project Name Candidates
+## Project Name
 
-- The final name will be chosen by Ashish after the product scope is stable. Do not lock an AI-generated name.
-- Working descriptor: WebMCP miniature desk-setup builder.
+- **Desksembly** — chosen by Ashish after Visual Pause 2.
+- Tagline: “An agent-ready desk, assembled in front of you.”
 
 ## One-Line Summary
 

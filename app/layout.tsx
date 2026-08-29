@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WebMCP miniature desk-setup builder",
+  title: "Desksembly — WebMCP miniature desk builder",
   description:
     "A Shopify-backed miniature desk world designed for shoppers and browser agents.",
 };
