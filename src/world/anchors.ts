@@ -53,7 +53,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
   {
     id: "organization-left",
     label: "Left organization zone",
-    roles: ["organization"],
+    roles: ["organization", "decor"],
     minDeskWidthCm: 90,
     maxFootprint: { widthCm: 28, depthCm: 24 },
     position: [-1.35, 0, 0.4],

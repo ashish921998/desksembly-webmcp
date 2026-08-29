@@ -12,8 +12,12 @@ export function Parcel({ parcel }: { parcel: ParcelVisual }) {
 
   useFrame((_, delta) => {
     if (!group.current || !anchor) return;
-    const target =
-      parcel.status === "arriving"
+    const returning = parcel.item.status === "returning";
+    const target = returning
+      ? parcel.status === "arriving" || parcel.status === "opening"
+        ? [anchor.position[0], 0.35, anchor.position[2]]
+        : [3.4, 1.8, 1.8]
+      : parcel.status === "arriving"
         ? [3.4, 1.8, 1.8]
         : parcel.status === "opening"
           ? [anchor.position[0], 0.55, anchor.position[2]]
@@ -32,7 +36,13 @@ export function Parcel({ parcel }: { parcel: ParcelVisual }) {
       <mesh castShadow>
         <boxGeometry args={[0.75, 0.48, 0.62]} />
         <meshStandardMaterial
-          color={parcel.status === "placing" ? "#d7eadc" : "#d39a63"}
+          color={
+            parcel.item.status === "returning"
+              ? "#b97862"
+              : parcel.status === "placing"
+                ? "#d7eadc"
+                : "#d39a63"
+          }
           transparent={parcel.status === "placing"}
           opacity={parcel.status === "placing" ? 0.45 : 1}
         />

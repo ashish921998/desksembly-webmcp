@@ -42,7 +42,13 @@ export async function previewPlan(
   }
 
   const variantById = new Map(variants.map((variant) => [variant.merchandiseId, variant]));
-  const lockedItems = selectItems(state).filter((item) => item.locked);
+  const currentItems = selectItems(state);
+  const lockedItems = currentItems.filter((item) => item.locked);
+  const existingByMerchandiseId = new Map(
+    currentItems
+      .filter((item) => !item.locked)
+      .map((item) => [item.variant.merchandiseId, item]),
+  );
   const occupied = new Set(lockedItems.map((item) => item.anchorId));
   const usedRoles = new Set(lockedItems.map((item) => item.variant.role));
 
@@ -61,6 +67,7 @@ export async function previewPlan(
   const placements: PlanProposal["placements"] = [];
   const proposedItems: SceneItem[] = [];
   const orderedVariants = [];
+  const preservedItemIds: string[] = [];
 
   for (const selection of parsed.data.selections) {
     const variant = variantById.get(selection.merchandiseId);
@@ -76,12 +83,23 @@ export async function previewPlan(
       throw inputError(`Role ${selection.role} is already occupied.`, state.sceneVersion);
     }
     validateVariant(variant, parsed.data.constraints, selection.role);
-    const anchorId = chooseAnchor({
-      variant,
-      constraints: parsed.data.constraints,
-      occupied,
-      preferredAnchorId: selection.preferredAnchorId,
-    });
+    const existing = existingByMerchandiseId.get(selection.merchandiseId);
+    let anchorId: string;
+    try {
+      anchorId = chooseAnchor({
+        variant,
+        constraints: parsed.data.constraints,
+        occupied,
+        preferredAnchorId: selection.preferredAnchorId ?? existing?.anchorId,
+      });
+    } catch (error) {
+      if (!existing || selection.preferredAnchorId) throw error;
+      anchorId = chooseAnchor({
+        variant,
+        constraints: parsed.data.constraints,
+        occupied,
+      });
+    }
     occupied.add(anchorId);
     usedRoles.add(selection.role);
     const reason = selection.reason.slice(0, 180);
@@ -92,7 +110,9 @@ export async function previewPlan(
       reason,
     });
     proposedItems.push({
-      id: `item-${variant.merchandiseId.replace(/[^a-zA-Z0-9]/g, "-")}`,
+      id:
+        existing?.id ??
+        `item-${variant.merchandiseId.replace(/[^a-zA-Z0-9]/g, "-")}`,
       variant,
       anchorId,
       status: "proposal",
@@ -100,8 +120,14 @@ export async function previewPlan(
       locked: false,
       reason,
     });
+    if (existing && existing.anchorId === anchorId) preservedItemIds.push(existing.id);
     orderedVariants.push(variant);
   }
+
+  const returningItemIds = currentItems
+    .filter((item) => !item.locked && !preservedItemIds.includes(item.id))
+    .map((item) => item.id)
+    .sort();
 
   const completeItems = [...lockedItems, ...proposedItems];
   validateItemCount(completeItems, parsed.data.constraints);
@@ -110,6 +136,8 @@ export async function previewPlan(
     basedOnSceneVersion: state.sceneVersion,
     constraints: parsed.data.constraints,
     placements,
+    preservedItemIds,
+    returningItemIds,
     prices: orderedVariants.map((variant) => ({
       merchandiseId: variant.merchandiseId,
       price: variant.price,
@@ -121,6 +149,8 @@ export async function previewPlan(
     constraints: structuredClone(parsed.data.constraints),
     placements,
     variants: structuredClone(orderedVariants),
+    preservedItemIds,
+    returningItemIds,
     rejected: [],
     digest,
   };

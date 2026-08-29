@@ -23,8 +23,8 @@ test("animates, cancels, retries, and reduces the starter desk sequence", async 
   await expect(
     page.getByRole("status").filter({ hasText: "Deterministic replay complete" }),
   ).toBeVisible({ timeout: 12_000 });
-  await expect(productItems).toHaveCount(4);
-  await expect(page.locator(".activity-ribbon__receipt[data-status='success']")).toHaveCount(3);
+  await expect(productItems).toHaveCount(5);
+  await expect(page.locator(".activity-ribbon__receipt[data-status='success']")).toHaveCount(4);
   await expect(page.locator(".parcel-label")).toHaveCount(0);
 
   await page.getByRole("button", { name: "Reset scene" }).click();
@@ -39,5 +39,5 @@ test("animates, cancels, retries, and reduces the starter desk sequence", async 
     page.getByRole("status").filter({ hasText: "Deterministic replay complete" }),
   ).toBeVisible({ timeout: 5_000 });
   expect(Date.now() - started).toBeLessThan(2_000);
-  await expect(productItems).toHaveCount(4);
+  await expect(productItems).toHaveCount(5);
 });

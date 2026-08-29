@@ -192,3 +192,27 @@ The final deployed target-browser check returned `market: US`, budget
 `USD 350.00`, and a four-item staged total of `USD 266.00` with no console
 errors. The Item 8 screenshots were refreshed after deployment and now show
 the US prompt and USD amounts.
+
+## Item 9 — US constraint shock and human-edit preservation
+
+The deployed target browser staged the five-item starter desk, locked the
+QuietType keyboard, and then applied the canonical revision:
+
+```text
+90 cm desk
+$300 budget
+US availability
+```
+
+An agent stage call based on scene version `2` was rejected with `STALE_SCENE`
+after the human lock advanced the scene to version `3`. The refreshed revision
+then preserved the locked lamp and keyboard plus the unaffected display and
+speaker, returned only the wide-desk Terracotta plant, and staged the compact
+Felt catchall coaster at `organization-left`. The final total was `USD 275.00`
+at scene version `5`.
+
+A second live case moved and locked the display at the 120 cm-only wide anchor.
+The 90 cm revision returned `LOCKED_ITEM_CONFLICT`, displayed two relaxation
+options, and left the scene byte-for-byte unchanged. No browser errors occurred.
+
+![US constraint shock with one return, one replacement, and locked keyboard](evidence/constraint-shock.png)

@@ -131,6 +131,20 @@ export const MOCK_DESK_PRODUCTS: readonly ProductVariantRef[] = [
     dimensions: { widthCm: 10, depthCm: 10, heightCm: 10 },
     tags: ["fixture"],
   },
+  {
+    merchandiseId: gid("10"),
+    productId: productGid("10"),
+    handle: "felt-catchall-coaster",
+    title: "Felt catchall coaster",
+    variantTitle: "Moss",
+    role: "decor",
+    imageUrl: null,
+    price: { amount: "9.00", currencyCode: "USD" },
+    available: true,
+    market: "US",
+    dimensions: { widthCm: 16, depthCm: 16, heightCm: 2 },
+    tags: ["calm", "compact"],
+  },
 ] as const;
 
 export const MOCK_UNAVAILABLE_MERCHANDISE_ID = gid("07");

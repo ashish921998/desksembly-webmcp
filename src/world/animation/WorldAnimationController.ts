@@ -119,7 +119,11 @@ class WorldAnimationController implements SceneAnimationPort {
           ],
           receipts: [
             ...state.receipts,
-            { id: receiptId, label: `Stage ${item.variant.title}`, status: "pending" },
+            {
+              id: receiptId,
+              label: `${item.status === "returning" ? "Return" : "Stage"} ${item.variant.title}`,
+              status: "pending",
+            },
           ],
         }));
         await runTimeline({

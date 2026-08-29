@@ -92,6 +92,8 @@ export type PlanProposal = {
   constraints: WorldConstraints;
   placements: PlanPlacement[];
   variants: ProductVariantRef[];
+  preservedItemIds: string[];
+  returningItemIds: string[];
   rejected: Array<{ merchandiseId: string; code: string; message: string }>;
   digest: string;
 };

@@ -341,6 +341,44 @@ a {
   white-space: nowrap;
 }
 
+.constraint-shock {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.55fr) minmax(0, 1.45fr) auto;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+  padding: 18px;
+  border: 1px solid rgba(255, 122, 26, 0.24);
+  border-radius: 18px;
+  background: #fff7e9;
+}
+
+.constraint-shock h3 {
+  margin-top: 5px;
+  font-size: 1.15rem;
+}
+
+.constraint-shock blockquote {
+  color: #60482f;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.constraint-shock > p:last-of-type {
+  grid-column: 2 / -1;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.constraint-shock ul {
+  grid-column: 2 / -1;
+  display: grid;
+  gap: 5px;
+  padding-left: 18px;
+  color: #7d3d2c;
+  font-size: 0.78rem;
+}
+
 .activity-ribbon__label {
   color: var(--green);
   font: 700 0.68rem/1 var(--font-geist-mono), monospace;
@@ -668,7 +706,16 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .constraint-shock {
+    grid-template-columns: 1fr;
+  }
+
   .starter-prompt > p:last-child {
+    grid-column: auto;
+  }
+
+  .constraint-shock > p:last-of-type,
+  .constraint-shock ul {
     grid-column: auto;
   }
 

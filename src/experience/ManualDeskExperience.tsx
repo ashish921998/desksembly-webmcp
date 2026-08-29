@@ -19,6 +19,7 @@ import { worldAnimationController } from "@/src/world/animation/WorldAnimationCo
 import { useWorldAnimation } from "@/src/world/animation/use-world-animation";
 import { StarterPrompt } from "@/src/experience/StarterPrompt";
 import { ActivityRibbon } from "@/src/experience/ActivityRibbon";
+import { ConstraintShockPanel } from "@/src/experience/ConstraintShockPanel";
 
 const manualGateway = new MockCommerceGateway();
 
@@ -174,6 +175,7 @@ export function ManualDeskExperience() {
       </header>
 
       <StarterPrompt />
+      <ConstraintShockPanel />
       <ActivityRibbon />
 
       <div className="manual-world__layout">
@@ -236,6 +238,7 @@ export function ManualDeskExperience() {
             <li key={item.id}>
               <button
                 aria-pressed={item.id === selectedItemId}
+                data-merchandise-id={item.variant.merchandiseId}
                 onClick={() => setSelectedItemId(item.id)}
                 onPointerDown={(event) => {
                   pointerStarts.current[item.id] = event.clientX;

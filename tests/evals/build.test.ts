@@ -8,7 +8,7 @@ describe("starter build prompt eval", () => {
     expect(STARTER_PROMPT).toMatch(/US/);
     expect(STARTER_PROMPT).toMatch(/No RGB/);
     expect(STARTER_PROMPT).toMatch(/orange lamp/);
-    expect(STARTER_SELECTIONS).toHaveLength(3);
+    expect(STARTER_SELECTIONS).toHaveLength(4);
 
     const expectedToolFamilies = [
       "search_catalog",
@@ -26,6 +26,7 @@ describe("starter build prompt eval", () => {
       "display",
       "input",
       "audio",
+      "decor",
     ]);
     expect(
       STARTER_SELECTIONS.every((selection) =>

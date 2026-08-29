@@ -160,3 +160,13 @@
 - Historical build notes and evidence retain their original INR results as an audit trail; all active product behavior and forward-looking requirements now use US/USD.
 - Reran the full 24-test suite, 3 E2E journeys, 4 evals, typecheck, lint, and production build successfully.
 - Deployed the US revision to `https://devp-one.vercel.app` and verified through the target browser: `market=US`, `$350` starter budget, `$266` staged total, four scene items, and zero browser errors. Refreshed both animation evidence screenshots so the visible prompt, badges, and prices match US/USD.
+
+## Build — Item 9
+
+- Expanded the starter desk to five items with one intentional 120 cm-only plant, then added a compact US-available felt replacement for the 90 cm revision.
+- Enhanced plan preview/stage transactions to preserve locked and unchanged existing items by exact ID/anchor, identify returning items, animate only returns and replacements, and expose preserved/returned IDs in the result.
+- Added the canonical US shock panel: 90 cm desk, $300 budget, US availability, visible preservation/return counts, and two concrete relaxations when a locked product makes the request impossible.
+- Added return-carton activity and a replacement parcel while leaving unaffected objects still. Added merchandise IDs to the accessible list so before/after preservation is testable without reading the canvas.
+- E2E verifies the keyboard human lock, old-version `STALE_SCENE`, exact preserved IDs, only the Terracotta plant leaving, Felt coaster arrival, final $275 total, and the 90 cm badge. It also verifies a locked wide-display conflict, two suggestions, and an unchanged stable world.
+- Live target-browser verification reproduced scene versions `2 → 3 → 5`, returned one item, staged one replacement, preserved the locked keyboard, and produced no console errors. The locked wide-display failure left the serialized scene unchanged.
+- Verified the full 26-test Vitest suite, 4 E2E journeys, 6 evals, typecheck, lint, production build, and final Vercel deployment. Visual evidence is saved at `docs/evidence/constraint-shock.png`.

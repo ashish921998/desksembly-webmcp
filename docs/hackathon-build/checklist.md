@@ -74,7 +74,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
 
   **Visual pause 2:** Stop the fresh implementation task here. Show the user the deployed prompt-to-animated-desk journey, manual inspection/drag/lock behavior, activity ribbon, and reduced-motion result. Continue only after the user confirms the product direction and visual grammar.
 
-- [ ] **9. Implement human-edit preservation and constraint shock**
+- [x] **9. Implement human-edit preservation and constraint shock**
   Spec ref: `spec.md > Most Important Data Flow > Human edit and agent repair`, `Constraint And Placement Rules > Constraint shock`, `prd.md > Epic 5`
   What to build: Add revision proposal/return/replacement behavior; preserve locked and unaffected items; reject stale agent mutations after a manual edit; surface conflict explanations and two relaxation suggestions when no plan exists; implement the canonical late request for 90 cm width, $300 budget, and US availability.
   Acceptance: A human drag/lock increments the version; an old stage call fails `STALE_SCENE`; re-read/replan preserves the human choice; only conflicting products return and get replacements; new setup satisfies visible constraints; locked-item impossibility never silently unlocks; unsatisfiable requests leave the stable world unchanged.

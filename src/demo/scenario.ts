@@ -19,4 +19,25 @@ export const STARTER_SELECTIONS = [
     role: "audio" as const,
     reason: "Small speaker for calm background audio.",
   },
+  {
+    merchandiseId: MOCK_DESK_PRODUCTS[5].merchandiseId,
+    role: "decor" as const,
+    preferredAnchorId: "decor-back",
+    reason: "A warm plant for the wide desk.",
+  },
+] as const;
+
+export const CONSTRAINT_SHOCK_PROMPT =
+  "Fit this on a 90 cm desk, keep it under $300, and only use items available in the US.";
+
+export const CONSTRAINT_SHOCK_SELECTIONS = [
+  STARTER_SELECTIONS[0],
+  STARTER_SELECTIONS[1],
+  STARTER_SELECTIONS[2],
+  {
+    merchandiseId: MOCK_DESK_PRODUCTS[9].merchandiseId,
+    role: "decor" as const,
+    preferredAnchorId: "organization-left",
+    reason: "Compact replacement for the 90 cm desk.",
+  },
 ] as const;

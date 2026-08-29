@@ -32,10 +32,23 @@ export async function stagePlan(
   const variantById = new Map(
     proposal.variants.map((variant) => [variant.merchandiseId, variant]),
   );
+  const preservedIds = new Set(proposal.preservedItemIds);
   const stagedItems: SceneItem[] = proposal.placements.map((placement) => {
     const variant = variantById.get(placement.merchandiseId);
     if (!variant) {
       throw new DomainError("UNKNOWN_PRODUCT", "A proposal product is missing.");
+    }
+    const existing = Object.values(state.itemsById).find(
+      (item) =>
+        preservedIds.has(item.id) &&
+        item.variant.merchandiseId === placement.merchandiseId,
+    );
+    if (existing) {
+      return {
+        ...structuredClone(existing),
+        status: "confirmed" as const,
+        reason: placement.reason,
+      };
     }
     return {
       id: `item-${variant.merchandiseId.replace(/[^a-zA-Z0-9]/g, "-")}`,
@@ -48,11 +61,16 @@ export async function stagePlan(
     };
   });
   const lockedItems = selectItems(state).filter((item) => item.locked);
+  const returningItems = proposal.returningItemIds.flatMap((id) => {
+    const item = state.itemsById[id];
+    return item ? [{ ...structuredClone(item), status: "returning" as const }] : [];
+  });
+  const animatedItems = stagedItems.filter((item) => !preservedIds.has(item.id));
   const stableSnapshot = toSceneSnapshot(state);
 
   try {
     await (dependencies?.animation ?? immediateSceneAnimation).stage(
-      structuredClone(stagedItems),
+      structuredClone([...returningItems, ...animatedItems]),
       dependencies?.signal,
     );
   } catch (error) {
@@ -79,5 +97,7 @@ export async function stagePlan(
       merchandiseId: item.variant.merchandiseId,
       anchorId: item.anchorId,
     })),
+    preservedItemIds: [...proposal.preservedItemIds],
+    returnedItemIds: [...proposal.returningItemIds],
   };
 }
