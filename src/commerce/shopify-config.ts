@@ -26,9 +26,9 @@ export function getShopifyRuntimeConfig(): {
     myshopifyDomain: getStoreDomain(),
   };
   const i18n: ShopifyScriptsI18n = {
-    country: "IN",
+    country: "US",
     language: "EN",
-    currency: "INR",
+    currency: "USD",
   };
 
   return { shop, i18n };

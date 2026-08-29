@@ -107,7 +107,7 @@ describe("production deskbuilder WebMCP registry", () => {
     expect(previewResult).toMatchObject({
       ok: true,
       sceneVersion: 1,
-      total: { amount: "23096.00", currencyCode: "INR" },
+      total: { amount: "266.00", currencyCode: "USD" },
     });
     expect(sceneStore.getState().proposal?.placements[0].reason).not.toContain("<");
 

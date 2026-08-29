@@ -41,7 +41,7 @@ export class MockCommerceGateway implements CommerceGateway {
     return {
       id: "mock-cart-session",
       lines,
-      total: { amount: (totalMinor / 100).toFixed(2), currencyCode: "INR" },
+      total: { amount: (totalMinor / 100).toFixed(2), currencyCode: "USD" },
       checkoutUrl: lines.length ? "/demo-checkout-disabled" : null,
     };
   }

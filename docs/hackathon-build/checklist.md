@@ -18,7 +18,7 @@
 
 ## Wow Moment
 
-The shopper manually moves or locks a product, then gives a late desk-width, budget, and India-availability constraint. The browser agent preserves the human choice, replaces only conflicting products, and—after one visible approval—moves the exact Shopify-confirmed setup into the real cart.
+The shopper manually moves or locks a product, then gives a late desk-width, budget, and US-availability constraint. The browser agent preserves the human choice, replaces only conflicting products, and—after one visible approval—moves the exact Shopify-confirmed setup into the real cart.
 
 ## Checklist
 
@@ -51,7 +51,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
 - [x] **5. Implement live and deterministic commerce gateways**
   Spec ref: `spec.md > CommerceGateway`, `Constraint And Placement Rules`, `Risks And Verification > Risk 4`
   What to build: Implement the shared `CommerceGateway`; add Hydrogen normalization for exact variants, market-aware price/availability, cart reads, cart results, and checkout URL; add deterministic mock products/carts matching the same types; seed 6–12 desk products with roles and simple dimensions; include fixtures for unavailable variant, price change, and partial cart failure. Do not expose duplicate custom catalog/cart WebMCP tools.
-  Acceptance: Both gateways satisfy the same contract; normalized data contains only required safe fields; server tokens stay server-side; India market and budget validation work; mock mode is visibly labeled and cannot masquerade as Shopify; product roles cover one 3–5 item desk setup around the locked orange lamp.
+  Acceptance: Both gateways satisfy the same contract; normalized data contains only required safe fields; server tokens stay server-side; US market and budget validation work; mock mode is visibly labeled and cannot masquerade as Shopify; product roles cover one 3–5 item desk setup around the locked orange lamp.
   Verify: Run `npm run test:integration -- commerce-gateway`; compare live and mock normalized snapshots; scan the client build for private-token values; run `npm run build`; commit as `feat: add commerce gateways and desk catalog`.
 
 - [x] **6. Build the bare miniature desk and complete manual workflow**
@@ -76,7 +76,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
 
 - [ ] **9. Implement human-edit preservation and constraint shock**
   Spec ref: `spec.md > Most Important Data Flow > Human edit and agent repair`, `Constraint And Placement Rules > Constraint shock`, `prd.md > Epic 5`
-  What to build: Add revision proposal/return/replacement behavior; preserve locked and unaffected items; reject stale agent mutations after a manual edit; surface conflict explanations and two relaxation suggestions when no plan exists; implement the canonical late request for 90 cm width, ₹25,000 budget, and India availability.
+  What to build: Add revision proposal/return/replacement behavior; preserve locked and unaffected items; reject stale agent mutations after a manual edit; surface conflict explanations and two relaxation suggestions when no plan exists; implement the canonical late request for 90 cm width, $300 budget, and US availability.
   Acceptance: A human drag/lock increments the version; an old stage call fails `STALE_SCENE`; re-read/replan preserves the human choice; only conflicting products return and get replacements; new setup satisfies visible constraints; locked-item impossibility never silently unlocks; unsatisfiable requests leave the stable world unchanged.
   Verify: Run `npm run test:e2e -- constraint-shock` and `npm run test:evals -- revision`; execute live stale-state and locked-conflict cases; compare before/after item IDs; run `npm run build`; commit as `feat: preserve human edits during replanning`.
 

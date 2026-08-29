@@ -31,7 +31,7 @@ Ordinary storefront navigation exposes these operations as separate pages, filte
 ## Core Workflow
 
 1. The shopper opens a miniature desk world backed by one small Shopify product catalog.
-2. They give their compatible browser agent a brief such as: “Build a cozy work-from-home setup under ₹30,000 for a small room. No RGB. Keep the orange lamp.”
+2. They give their compatible browser agent a brief such as: “Build a cozy work-from-home setup under $350 for a small room in the US. No RGB. Keep the orange lamp.”
 3. The agent discovers the page's WebMCP tools, reads current scene state, searches products, resolves variants, and previews a valid kit.
 4. Validated products arrive as animated packages, unpack, and move smoothly into fixed semantic positions around the desk.
 5. The shopper locks, drags, rejects, or swaps one item.
@@ -105,11 +105,11 @@ Detailed evidence and links are in `outputs/webmcp-shopify-research-and-plan.md`
 
 ### Setup
 
-The miniature desk opens with an orange lamp already placed and locked by the shopper. The budget meter and India shipping context are visible.
+The miniature desk opens with an orange lamp already placed and locked by the shopper. The budget meter and US shipping context are visible.
 
 ### Initial request
 
-> “Build a cozy work-from-home desk setup under ₹30,000 for a small room. No RGB lighting. Keep the orange lamp.”
+> “Build a cozy work-from-home desk setup under $350 for a small room in the US. No RGB lighting. Keep the orange lamp.”
 
 The agent reads the current world, searches the catalog, resolves variants, and stages a 3–5 item setup. Products pass through named validation steps, arrive as packages, unpack, and snap into place.
 
@@ -119,7 +119,7 @@ The shopper drags one item away or rejects it. The scene version changes. The ag
 
 ### Constraint shock
 
-> “Make the setup fit a 90 cm desk, keep it under ₹25,000, and replace anything that cannot ship to India.”
+> “Make the setup fit a 90 cm desk, keep it under $300, and replace anything that is not available in the US.”
 
 Only necessary products leave in return cartons. New packages arrive and the world settles into a valid layout. Exact product/variant, reason, availability, and total remain visible.
 

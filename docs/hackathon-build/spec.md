@@ -1002,13 +1002,13 @@ Direct:
 "Show me the current desk world."
 
 Build:
-"Build a cozy desk setup under ₹30,000 for a small room. No RGB. Keep the orange lamp."
+"Build a cozy desk setup under $350 for a small room in the US. No RGB. Keep the orange lamp."
 
 Ambiguous:
 "Make the desk calmer and less expensive."
 
 Constraint shock:
-"Fit this on a 90 cm desk, keep it under ₹25,000, and only use items available in India."
+"Fit this on a 90 cm desk, keep it under $300, and only use items available in the US."
 
 Stale state:
 Human moves a product after the agent reads scene, before stage call.

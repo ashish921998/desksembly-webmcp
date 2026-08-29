@@ -25,9 +25,9 @@ const display: ProductVariantRef = {
   variantTitle: "24 inch",
   role: "display",
   imageUrl: null,
-  price: { amount: "12000.00", currencyCode: "INR" },
+  price: { amount: "139.00", currencyCode: "USD" },
   available: true,
-  market: "IN",
+  market: "US",
   dimensions: { widthCm: 50, depthCm: 20, heightCm: 36 },
   tags: ["calm"],
 };
@@ -40,9 +40,9 @@ const keyboard: ProductVariantRef = {
   variantTitle: "Sand",
   role: "input",
   imageUrl: null,
-  price: { amount: "5000.00", currencyCode: "INR" },
+  price: { amount: "49.00", currencyCode: "USD" },
   available: true,
-  market: "IN",
+  market: "US",
   dimensions: { widthCm: 38, depthCm: 14, heightCm: 4 },
   tags: ["quiet"],
 };
@@ -55,9 +55,9 @@ const decor: ProductVariantRef = {
   variantTitle: "Terracotta",
   role: "decor",
   imageUrl: null,
-  price: { amount: "1200.00", currencyCode: "INR" },
+  price: { amount: "12.00", currencyCode: "USD" },
   available: true,
-  market: "IN",
+  market: "US",
   dimensions: { widthCm: 14, depthCm: 14, heightCm: 22 },
   tags: ["cozy"],
 };
@@ -170,7 +170,7 @@ describe("versioned scene domain", () => {
   it("rejects budget and market conflicts with safe codes", async () => {
     const lowBudget: WorldConstraints = {
       ...DEFAULT_CONSTRAINTS,
-      budget: { amount: "4000.00", currencyCode: "INR" },
+      budget: { amount: "45.00", currencyCode: "USD" },
     };
     await expect(
       previewPlan(
@@ -183,7 +183,7 @@ describe("versioned scene domain", () => {
       ),
     ).rejects.toMatchObject({ code: "BUDGET_CONFLICT" });
 
-    const wrongMarket = { ...display, market: "US" };
+    const wrongMarket = { ...display, market: "CA" };
     await expect(
       previewPlan(
         {
@@ -273,7 +273,7 @@ describe("versioned scene domain", () => {
       cartSnapshot: {
         id: "cart-1",
         lines: [{ merchandiseId: display.merchandiseId, quantity: 1 }],
-        total: { amount: "12000.00", currencyCode: "INR" },
+        total: { amount: "139.00", currencyCode: "USD" },
         checkoutUrl: "https://checkout.example.test",
       },
     }));

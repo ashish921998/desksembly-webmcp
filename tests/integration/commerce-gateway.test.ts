@@ -84,17 +84,17 @@ describe("commerce gateways", () => {
     `);
   });
 
-  it("provides an India-ready deterministic catalog without pretending it is live", async () => {
+  it("provides a US-ready deterministic catalog without pretending it is live", async () => {
     const gateway = new MockCommerceGateway();
     expect(gateway.mode).toBe("deterministic-demo");
     expect(gateway.label).toMatch(/not a Shopify cart/i);
 
     const products = await gateway.getProductsByMerchandiseIds(
       MOCK_DESK_PRODUCTS.slice(0, 6).map((product) => product.merchandiseId),
-      { market: "IN" },
+      { market: "US" },
     );
     expect(products).toHaveLength(6);
-    expect(products.every((product) => product.market === "IN")).toBe(true);
+    expect(products.every((product) => product.market === "US")).toBe(true);
     expect(products.map((product) => product.role)).toEqual([
       "lamp",
       "display",
@@ -108,9 +108,9 @@ describe("commerce gateways", () => {
       {
         expectedSceneVersion: 0,
         constraints: {
-          budget: { amount: "30000.00", currencyCode: "INR" },
+          budget: { amount: "350.00", currencyCode: "USD" },
           deskWidthCm: 120,
-          market: "IN",
+          market: "US",
           styleTags: ["cozy"],
           disallowedTags: ["RGB"],
           minItems: 3,
@@ -143,7 +143,7 @@ describe("commerce gateways", () => {
     const gateway = new MockCommerceGateway();
     const [unavailable] = await gateway.getProductsByMerchandiseIds(
       [MOCK_UNAVAILABLE_MERCHANDISE_ID],
-      { market: "IN" },
+      { market: "US" },
     );
     expect(unavailable.available).toBe(false);
     expect(MOCK_PRICE_CHANGE.previousPrice).not.toEqual(MOCK_PRICE_CHANGE.currentPrice);

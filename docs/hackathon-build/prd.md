@@ -67,7 +67,7 @@ The shopper should be able to go from an incomplete natural-language intention t
 6. Validated packages arrive, open, and move into fixed semantic locations around the desk.
 7. The shopper inspects the result and manually changes one item by locking, moving, rejecting, or removing it.
 8. The page indicates that the world changed and any future agent action must use the latest state.
-9. The shopper gives a late constraint change, such as reducing the budget, narrowing desk width, or requiring India availability.
+9. The shopper gives a late constraint change, such as reducing the budget, narrowing desk width, or requiring US availability.
 10. The agent preserves the locked lamp and unaffected items, returning and replacing only conflicting products.
 11. The shopper opens a final review showing exact products, variants, quantities, availability, and total.
 12. The shopper explicitly approves the reviewed setup.

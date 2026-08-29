@@ -11,7 +11,7 @@ import {
   getStoreDomain,
 } from "@/src/commerce/shopify-config";
 
-const I18N = { country: "IN", language: "EN" } as const;
+const I18N = { country: "US", language: "EN" } as const;
 
 export function createStorefrontClientForRequest(request: Request) {
   const requestContext = createShopifyRequestContext({ request, i18n: I18N });

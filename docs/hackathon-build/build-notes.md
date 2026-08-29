@@ -150,3 +150,12 @@
 - Target cancellation/retry surfaced that `resetWorld()` cleared reduced-motion preference when a cancelled proposal existed. Preserved that accessibility preference across reset and added a domain regression assertion. The final deployed reduced retry completed in 338 ms with no browser errors.
 - Limitation remains explicit: without development-store credentials, Shopify native discovery and the deterministic desk fixture catalog are separate adjacent proofs. The UI and evidence do not represent the fixture products as Shopify search results.
 - Verified the full 24-test Vitest suite, `npm run test:e2e -- stage-plan` (3 E2E journeys), `npm run test:evals -- build` (4 evals), typecheck, lint, production build, and final Vercel deployment.
+
+## Active shaping — US market revision
+
+- At Visual Pause 2, Ashish replaced the India constraint with the US market.
+- Updated the current scope, PRD, technical spec, checklist wow moment, and upcoming Item 9 constraint shock to use US availability.
+- Rebased the deterministic story onto USD with round demo budgets: $350 initially and $300 after the 90 cm desk constraint. This is a product-demo budget choice, not a live currency conversion claim.
+- Repriced the nine deterministic desk fixtures in USD, changed the default market/runtime context to `US`, and updated domain, gateway, WebMCP, prompt, eval, and E2E expectations. The core staged setup is now $266.
+- Historical build notes and evidence retain their original INR results as an audit trail; all active product behavior and forward-looking requirements now use US/USD.
+- Reran the full 24-test suite, 3 E2E journeys, 4 evals, typecheck, lint, and production build successfully.

@@ -7,9 +7,9 @@ import type {
 } from "@/src/domain/types";
 
 export const DEFAULT_CONSTRAINTS: WorldConstraints = {
-  budget: { amount: "30000.00", currencyCode: "INR" },
+  budget: { amount: "350.00", currencyCode: "USD" },
   deskWidthCm: 120,
-  market: "IN",
+  market: "US",
   styleTags: ["cozy"],
   disallowedTags: ["RGB"],
   minItems: 3,
@@ -24,9 +24,9 @@ export const ORANGE_LAMP_VARIANT: ProductVariantRef = {
   variantTitle: "Warm orange",
   role: "lamp",
   imageUrl: null,
-  price: { amount: "3499.00", currencyCode: "INR" },
+  price: { amount: "39.00", currencyCode: "USD" },
   available: true,
-  market: "IN",
+  market: "US",
   dimensions: { widthCm: 20, depthCm: 18, heightCm: 38 },
   tags: ["cozy", "warm"],
 };

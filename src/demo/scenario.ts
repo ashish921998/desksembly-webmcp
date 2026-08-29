@@ -1,7 +1,7 @@
 import { MOCK_DESK_PRODUCTS } from "@/src/commerce/mock-catalog";
 
 export const STARTER_PROMPT =
-  "Build a cozy work-from-home desk setup under ₹30,000 for a small room. No RGB. Keep the orange lamp.";
+  "Build a cozy work-from-home desk setup under $350 for a small room in the US. No RGB. Keep the orange lamp.";
 
 export const STARTER_SELECTIONS = [
   {

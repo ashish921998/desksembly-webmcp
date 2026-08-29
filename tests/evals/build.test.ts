@@ -4,7 +4,8 @@ import { TOOL_NAMES } from "@/src/webmcp/tool-names";
 
 describe("starter build prompt eval", () => {
   it("requires Shopify discovery before scene preview and stage", () => {
-    expect(STARTER_PROMPT).toMatch(/₹30,000/);
+    expect(STARTER_PROMPT).toMatch(/\$350/);
+    expect(STARTER_PROMPT).toMatch(/US/);
     expect(STARTER_PROMPT).toMatch(/No RGB/);
     expect(STARTER_PROMPT).toMatch(/orange lamp/);
     expect(STARTER_SELECTIONS).toHaveLength(3);

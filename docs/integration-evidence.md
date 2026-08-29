@@ -171,3 +171,19 @@ does not claim that its fixture variants came from `mock.shop` search results.
 ![Parcel opening during the staged desk workflow](evidence/animated-stage.png)
 
 ![Completed desk, activity receipts, and accessible scene list](evidence/animated-desk.png)
+
+## Market revision after Visual Pause 2
+
+Ashish changed the active MVP market from India to the US. Earlier INR evidence
+above is retained as historical verification. The current build now uses:
+
+```text
+Market: US
+Currency: USD
+Starter budget: $350
+90 cm constraint-shock budget: $300
+Current four-item staged total: $266
+```
+
+This revision uses round product-demo budgets and does not claim to be an
+exchange-rate conversion.
