@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ShopifyRuntime } from "@/src/experience/ShopifyRuntime";
 import { getShopifyRuntimeConfig } from "@/src/commerce/shopify-config";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     "A Shopify-backed miniature desk world designed for shoppers and browser agents.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   const runtime = getShopifyRuntimeConfig();
 
   return (

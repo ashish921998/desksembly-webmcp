@@ -185,3 +185,13 @@
 - E2E verifies stale review rejection after a USD 45 speaker price change, five reviewed lines, partial rejection, accepted-only animation, consumed approval reuse failure, exact retry, six-line cart with unrelated Walnut stand, USD 307 total, carted scene statuses, and disabled checkout.
 - Live target-browser verification reconciled the exact five-line USD 278 scene into the six-line deterministic cart, kept checkout disabled, and separately proved an unapproved native Shopify `add_to_cart` call still fails without changing Shopify cart state.
 - Verified the full 26-test Vitest suite, all 5 E2E journeys, typecheck, lint, production build, and Vercel deployment. Visual evidence is saved at `docs/evidence/deterministic-review-cart.png`.
+
+## Build — Item 11
+
+- Added adversarial merchant/reason text, ambiguous prompt, and mid-chain partial-failure evals; the eval suite now covers direct, build, revision, stale, ambiguous, adversarial, and failure behavior.
+- Added a safe Next.js runtime error boundary, capped canvas DPR at 1.5, documented the production smoke checklist, and expanded README setup, architecture, verification, supported demo, licensing, and deterministic-cart limitations.
+- The first clean-copy check exposed a dependency on generated Next `LayoutProps`; replaced it with an explicit `ReactNode` prop. A fresh rsync copy then passed `npm ci`, typecheck before first build, and production build.
+- Ran the complete matrix: 30 Vitest tests, 10 integration tests, all 5 Playwright journeys, 10 evals, typecheck, lint, and a private-token-sentinel production build.
+- Final production smoke passed HTTPS/HSTS/origin-keying, exact five-tool inventory, fallback disclosure, reduced-motion five-item replay, 390 px layout without overflow, no browser errors, no client token sentinel, and no third-party 3D assets.
+- Used the feature-video record-only path because the repository has no Git remote or PR. Generated `docs/evidence/demo-draft.mp4` from the verified milestone captures with concise system narration: 29.96 seconds, 1280×720 H.264, AAC audio, 676 KB.
+- Deployed the hardened build to `https://devp-one.vercel.app` and froze feature work for handoff preparation.

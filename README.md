@@ -1,32 +1,105 @@
 # WebMCP miniature desk-setup builder
 
-An in-progress Shopify-backed miniature desk world designed for a shopper and
-their compatible browser agent. The current checkpoint is the empty Hydrogen
-storefront shell; the scene, custom WebMCP tools, and cart gate are added only
-through the verified build checklist.
+A proof-of-concept Shopify storefront where a shopper and a compatible browser
+agent shape one directly manipulable miniature desk world. WebMCP exposes five
+scene-owned tools; Shopify retains its native catalog, cart, and checkout tools.
+
+Live proof of concept: <https://devp-one.vercel.app>
+
+## Current proof
+
+- Fixed US desk world with one human-locked orange lamp.
+- Exact $350 starter prompt and $300/90 cm US constraint shock.
+- Cancellable parcel assembly, accessible scene list, manual edits, locks, and
+  reduced motion.
+- Stale-scene rejection and preservation of locked/unaffected product IDs.
+- Exact one-time deterministic review/cart fallback with partial-failure truth.
+- Shopify-native WebMCP coexistence and an application-enforced native cart gate.
+
+## Honest limitation
+
+No participant Shopify development store is connected. The desk catalog and
+final scene cart are therefore clearly labeled deterministic fallback data.
+Shopify-hosted `mock.shop` proves native tool coexistence and cart-gate behavior,
+but the project does **not** claim an exact participant-store cart or checkout.
+
+## Architecture
+
+```text
+Shopify native WebMCP tools ─┐
+                             ├─ browser agent
+deskbuilder.* scene tools ───┘       │
+                                     v
+manual UI ───────────────> versioned domain commands
+                                     │
+                   ┌─────────────────┴────────────────┐
+                   v                                  v
+          React Three Fiber world         commerce gateway / review gate
+```
+
+Scene mutations only occur through domain commands. Every agent mutation carries
+an expected scene version. Review approval is exact, expiring, and one-time.
+
+## Requirements
+
+- Node.js 20 or newer
+- npm
+- A WebMCP-capable Chromium/browser-agent environment for live tool operation
 
 ## Local setup
 
-1. Copy `.env.example` to `.env.local` and provide Shopify Headless channel
-   credentials when testing against a real development store. Without local
-   credentials the shell uses `mock.shop` for non-secret development defaults.
-2. Run `npm install`.
-3. Run `npm run dev` and open `http://localhost:3000`.
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-## Checks
+Without credentials, the app intentionally runs the labeled deterministic path
+and tokenless `mock.shop` integration checks.
 
-- `npm run typecheck`
-- `npm test -- --run`
-- `npm run build`
+To connect a development store, fill these untracked values from Shopify's
+Headless channel:
 
-Hydrogen's browser runtime is rendered once at the root, and Shopify-owned
-request routes are intercepted by the Next.js proxy before application routing.
+```text
+PUBLIC_STORE_DOMAIN
+PUBLIC_STOREFRONT_API_TOKEN
+PRIVATE_STOREFRONT_API_TOKEN
+PUBLIC_STOREFRONT_ID
+PUBLIC_CHECKOUT_DOMAIN
+SHOP_ID
+```
 
-## Deployment
+Never commit `.env.local` or private tokens.
 
-The current verified production shell is available at
-[devp-one.vercel.app](https://devp-one.vercel.app).
+## Verification
 
-## License
+```bash
+npm run typecheck
+npm test -- --run
+npm run test:integration
+npm run test:e2e
+npm run test:evals
+npm run lint
+npm run build
+```
 
-MIT. See `LICENSE` and `THIRD_PARTY_NOTICES.md`.
+The test matrix covers domain invariants, live Hydrogen normalization, tool
+registration, cart gating, manual accessibility, animation cancellation,
+reduced motion, US constraint shock, exact review, partial failure, adversarial
+text, and fallback disclosure.
+
+## Supported demo flow
+
+1. Run or copy the $350 starter request.
+2. Watch four parcels assemble around the locked lamp.
+3. Move or lock a product manually.
+4. Apply the $300, 90 cm, US-availability revision.
+5. Prepare and approve the exact deterministic review once.
+6. Observe accepted-only reconciliation and the disabled Shopify Checkout
+   disclosure.
+
+## Source and licenses
+
+All implementation in this repository is new hackathon work. Visuals use only
+local primitive geometry; no third-party 3D assets are included. The project is
+MIT licensed—see `LICENSE` and `THIRD_PARTY_NOTICES.md`.

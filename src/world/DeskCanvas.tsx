@@ -27,7 +27,11 @@ export function DeskCanvas({
       role="img"
       aria-label="Isometric miniature desk with directly manipulable products"
     >
-      <Canvas camera={{ position: [5.8, 4.2, 6.2], fov: 38 }}>
+      <Canvas
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, powerPreference: "high-performance" }}
+        camera={{ position: [5.8, 4.2, 6.2], fov: 38 }}
+      >
         <color attach="background" args={["#e8eee7"]} />
         <ambientLight intensity={1.3} />
         <directionalLight position={[4, 7, 5]} intensity={2.2} castShadow />

@@ -235,3 +235,25 @@ live Shopify cart state was unchanged. No participant-store or checkout claim is
 made.
 
 ![Exact scene review beside the reconciled deterministic cart](evidence/deterministic-review-cart.png)
+
+## Item 11 — hardened production build
+
+Final automated matrix:
+
+```text
+Vitest: 30 tests / 12 files
+Integration: 10 tests / 4 files
+Playwright: 5 journeys
+Agent evals: 10 tests / 6 files
+Typecheck, lint, production build: passed
+Clean-copy npm ci, typecheck, build: passed
+```
+
+The final production smoke checklist is recorded in `docs/production-smoke.md`.
+The deployed page returned HTTPS 200 with HSTS and origin-keying, exposed exactly
+five project tools, completed a reduced-motion five-item replay, rendered at
+390 px without horizontal overflow, and produced no application console errors.
+
+The record-only narrated demo draft is `docs/evidence/demo-draft.mp4`: H.264
+video plus AAC audio, 1280×720, 29.96 seconds, 676,061 bytes. It explicitly
+states that the cart is deterministic and Shopify Checkout is disabled.
