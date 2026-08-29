@@ -34,7 +34,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
   Acceptance: A compatible live page exposes both Shopify native tools and `deskbuilder.echo`; the echo tool can be invoked; cleanup unregisters it without leaks; unsupported browsers display a non-blocking compatibility state; no duplicate names exist.
   Verify: Run `npm run test:integration -- webmcp-coexistence`; use the target WebMCP inspector/browser agent to call one Shopify read tool and `deskbuilder.echo`; save sanitized screenshots/logs; run `npm run build`; commit as `test: prove webmcp tool coexistence`.
 
-- [ ] **3. Prove the human-approved Shopify cart gate**
+- [x] **3. Prove the human-approved Shopify cart gate**
   Spec ref: `spec.md > Cart Review Gate`, `External APIs And Dependencies > Shopify`, `Risks And Verification > Risk 3`
   What to build: Configure Shopify Standard Action `updateCart` once with a handler; create the minimum canonical line digest and one-time approval record; reject an unapproved or mismatched update without calling Shopify's default handler; allow an exact approved payload; await Shopify result/cart event and reconcile it; open the real cart UI on success. Keep this spike deliberately plain—no Three.js or cart animation.
   Acceptance: An agent/native `update_cart` attempt without approval fails and leaves the cart unchanged; an exact human-approved test line reaches Shopify; returned/visible cart variants, quantities, and total match; approval expires or consumes once; failure propagation is useful enough for the agent and UI. If the native handler cannot enforce this reliably, activate the documented non-overlapping fallback and record why.

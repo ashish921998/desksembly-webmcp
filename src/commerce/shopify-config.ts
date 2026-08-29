@@ -6,6 +6,7 @@ import type {
 } from "@shopify/hydrogen";
 
 const DEFAULT_STORE_DOMAIN = "mock.shop";
+const DEFAULT_SHOP_ID = "gid://shopify/Shop/68817551382";
 
 export function getStoreDomain() {
   return process.env.PUBLIC_STORE_DOMAIN?.trim() || DEFAULT_STORE_DOMAIN;
@@ -20,7 +21,7 @@ export function getShopifyRuntimeConfig(): {
   i18n: ShopifyScriptsI18n;
 } {
   const shop: ShopifyScriptsShop = {
-    shopId: process.env.SHOP_ID?.trim() || "1",
+    shopId: process.env.SHOP_ID?.trim() || DEFAULT_SHOP_ID,
     storefrontId: process.env.PUBLIC_STOREFRONT_ID?.trim() || "0",
     myshopifyDomain: getStoreDomain(),
   };

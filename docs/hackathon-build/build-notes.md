@@ -81,3 +81,14 @@
 - Called `deskbuilder.echo` successfully and called Shopify `search_catalog` plus `get_cart`; the latter returned the expected empty mock cart. Navigating away removed the custom tool, and returning registered exactly one instance.
 - Integration finding: the judged in-app runtime omitted the tool callback-options object even though the 2026-08-26 draft marks it required. The adapter now tolerates omission while honoring `AbortSignal` when present; this compatibility behavior is covered by the integration test.
 - Sanitized tool inventory, call results, versions, cleanup/fallback checks, and screenshot are recorded in `docs/integration-evidence.md` and `docs/evidence/webmcp-coexistence.png`.
+
+## Build — Item 3
+
+- Implemented canonical line serialization, SHA-256 review digests, short-lived one-time approvals, and a single configured `Shopify.actions.updateCart` handler. Only an exact unexpired digest delegates to Shopify's default handler; successful delegation consumes the approval.
+- Added a deliberately plain review/cart proof panel with controls for unapproved, mismatched, expired, exact-approved, and repeated-consumed cases. The panel awaits cart event promises and keeps the authoritative action result visible without relying on Shopify's default `/cart` navigation.
+- Added integration coverage for all five gate cases plus digest ordering. `npm run test:integration -- cart-gate`, typecheck, lint, and production build pass.
+- Live verification used Shopify-hosted `mock.shop` through Standard Actions and the native WebMCP tools. An unapproved native `add_to_cart` call returned a useful approval error and left the authoritative cart unchanged.
+- The exact reviewed Slides / Medium variant was added once for CAD 25.00 while preserving a pre-existing Slides / Small line. Shopify `get_cart` reported both exact variant IDs, quantity one each, and CAD 50.00 total; consumed approval reuse remained blocked.
+- Integration finding: Shopify's default `openCart` navigates this minimal headless shell to `/cart`. The spike therefore opens its own result drawer after the action resolves so review/cart reconciliation remains visible. The actual cart remains Shopify-owned.
+- No participant development-store credentials are present. The page and evidence label `mock.shop` accurately; do not present this as a participant-store cart until credentials are connected.
+- Sanitized live results and the visual ledger are recorded in `docs/integration-evidence.md` and `docs/evidence/cart-gate-approved.png`.

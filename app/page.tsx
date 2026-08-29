@@ -1,5 +1,6 @@
 import { SHELL_DESCRIPTION, SHELL_TITLE } from "@/src/experience/shell-copy";
 import { AgentReadinessBadge } from "@/src/experience/AgentReadinessBadge";
+import { CartGatePanel } from "@/src/review/CartGatePanel";
 
 export default function Home() {
   return (
@@ -27,6 +28,8 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <CartGatePanel />
     </main>
   );
 }
