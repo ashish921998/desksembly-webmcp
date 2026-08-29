@@ -3,6 +3,7 @@ import { AgentReadinessBadge } from "@/src/experience/AgentReadinessBadge";
 import { CartGatePanel } from "@/src/review/CartGatePanel";
 import { DemoModeBanner } from "@/src/experience/DemoModeBanner";
 import { getStoreDomain } from "@/src/commerce/shopify-config";
+import { ManualDeskExperience } from "@/src/experience/ManualDeskExperience";
 
 export default function Home() {
   const deterministicCommerce = getStoreDomain() === "mock.shop";
@@ -24,15 +25,16 @@ export default function Home() {
           <div className="shell__leg shell__leg--right" />
         </div>
         <div className="shell__copy">
-          <p>Foundation checkpoint</p>
-          <h2>The desk world arrives after the commerce gates pass.</h2>
+          <p>Foundation passed</p>
+          <h2>The manual miniature world is live below.</h2>
           <p>
-            This first shell proves the deployment and Shopify runtime without
-            adding scene assets or custom browser-agent tools early.
+            Commerce remains authoritative while every visible scene edit flows
+            through the same versioned domain commands.
           </p>
         </div>
       </section>
 
+      <ManualDeskExperience />
       <CartGatePanel />
     </main>
   );

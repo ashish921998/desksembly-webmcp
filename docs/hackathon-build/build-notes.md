@@ -119,3 +119,12 @@
 - Live normalization verification queried tokenless Shopify-hosted `mock.shop` through Hydrogen and validated the result against the same strict Zod product contract used by the deterministic gateway.
 - Verified India-market catalog coverage and a valid under-₹30,000 domain proposal, plus unavailable and partial cart behavior.
 - Ran `npm run test:integration -- commerce-gateway` (7 integration tests passing), the full 17-test Vitest suite, typecheck, lint, and production build. A build with a synthetic private-token sentinel contained no sentinel in `.next/static`.
+
+## Build — Item 6
+
+- Added exact React Three Fiber, Drei, Three.js, and Three.js type dependencies and built a fixed isometric desk with semantic anchors, lighting, primitive product visuals, selection markers, and visible locked state.
+- Added a manual experience that begins with only the locked orange lamp, then can stage a deterministic 3-product sample exclusively through the domain preview/stage commands.
+- Added the corresponding accessible scene list, inspection details, market/desk/budget badges, keyboard selection and movement, pointer-drag movement, lock/unlock, removal, invalid-placement explanation, scene reset, and mobile layout. Scene reset continues to preserve authoritative cart state.
+- A live in-app browser visual check caught and corrected inherited anchor heights that initially left products floating. The corrected anchors place every primitive on the desk surface.
+- Manually verified the pointer flow by dragging the Paperframe monitor card from `display-center` to `display-wide`; the list and scene version updated together. Playwright verified the keyboard/manual flow, lock/unlock, valid and invalid movement, removal, accessible names, 390×844 layout, and no horizontal overflow.
+- Verified `npm run test:e2e -- manual-world` (2 journeys passing), typecheck, lint, and production build. Current Three.js emits upstream deprecation warnings for its clock/shadow implementation, but no application errors occur.

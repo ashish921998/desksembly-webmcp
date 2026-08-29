@@ -16,7 +16,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
     roles: ["lamp"],
     minDeskWidthCm: 90,
     maxFootprint: { widthCm: 24, depthCm: 24 },
-    position: [-1.9, 0.72, -0.35],
+    position: [-1.9, 0, -0.35],
   },
   {
     id: "display-center",
@@ -24,7 +24,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
     roles: ["display"],
     minDeskWidthCm: 90,
     maxFootprint: { widthCm: 54, depthCm: 24 },
-    position: [0, 0.9, -0.55],
+    position: [0, 0, -0.55],
   },
   {
     id: "display-wide",
@@ -32,7 +32,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
     roles: ["display"],
     minDeskWidthCm: 120,
     maxFootprint: { widthCm: 72, depthCm: 30 },
-    position: [0.35, 0.9, -0.55],
+    position: [0.35, 0, -0.55],
   },
   {
     id: "input-front",
@@ -40,7 +40,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
     roles: ["input"],
     minDeskWidthCm: 90,
     maxFootprint: { widthCm: 48, depthCm: 22 },
-    position: [0, 0.74, 0.45],
+    position: [0, 0, 0.45],
   },
   {
     id: "audio-right",
@@ -48,7 +48,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
     roles: ["audio"],
     minDeskWidthCm: 90,
     maxFootprint: { widthCm: 24, depthCm: 22 },
-    position: [1.85, 0.78, -0.05],
+    position: [1.85, 0, -0.05],
   },
   {
     id: "organization-left",
@@ -56,7 +56,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
     roles: ["organization"],
     minDeskWidthCm: 90,
     maxFootprint: { widthCm: 28, depthCm: 24 },
-    position: [-1.35, 0.76, 0.4],
+    position: [-1.35, 0, 0.4],
   },
   {
     id: "decor-back",
@@ -64,7 +64,7 @@ export const DESK_ANCHORS: readonly DeskAnchor[] = [
     roles: ["decor"],
     minDeskWidthCm: 120,
     maxFootprint: { widthCm: 26, depthCm: 20 },
-    position: [1.2, 0.76, -0.7],
+    position: [1.2, 0, -0.7],
   },
 ] as const;
 

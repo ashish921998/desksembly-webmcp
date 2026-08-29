@@ -54,7 +54,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
   Acceptance: Both gateways satisfy the same contract; normalized data contains only required safe fields; server tokens stay server-side; India market and budget validation work; mock mode is visibly labeled and cannot masquerade as Shopify; product roles cover one 3–5 item desk setup around the locked orange lamp.
   Verify: Run `npm run test:integration -- commerce-gateway`; compare live and mock normalized snapshots; scan the client build for private-token values; run `npm run build`; commit as `feat: add commerce gateways and desk catalog`.
 
-- [ ] **6. Build the bare miniature desk and complete manual workflow**
+- [x] **6. Build the bare miniature desk and complete manual workflow**
   Spec ref: `spec.md > File Structure > world`, `Components And Responsibilities > DeskCanvas`, `prd.md > Epic 1`, `Epic 4`
   What to build: Add the fixed isometric React Three Fiber desk, camera, lighting, semantic anchors, orange lamp, primitive/low-poly product visuals, corresponding accessible list view, inspect panel, selection, keyboard/pointer drag, lock/unlock, remove, invalid-placement snap-back, budget/market badges, compatibility notice, and responsive shell. All UI actions call domain commands.
   Acceptance: The initial world is empty except for a visibly locked orange lamp; a user can inspect, drag, lock, unlock, and remove supported items; invalid placements explain and return; list view exposes the same products/status; laptop flow is complete and mobile is viewable; no WebMCP or cart behavior is required for this item.
