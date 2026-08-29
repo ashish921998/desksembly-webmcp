@@ -1,10 +1,14 @@
 import { SHELL_DESCRIPTION, SHELL_TITLE } from "@/src/experience/shell-copy";
 import { AgentReadinessBadge } from "@/src/experience/AgentReadinessBadge";
 import { CartGatePanel } from "@/src/review/CartGatePanel";
+import { DemoModeBanner } from "@/src/experience/DemoModeBanner";
+import { getStoreDomain } from "@/src/commerce/shopify-config";
 
 export default function Home() {
+  const deterministicCommerce = getStoreDomain() === "mock.shop";
   return (
     <main className="shell">
+      <DemoModeBanner active={deterministicCommerce} />
       <section className="shell__hero" aria-labelledby="shell-title">
         <p className="shell__eyebrow">Shopify × WebMCP proof of concept</p>
         <h1 id="shell-title">{SHELL_TITLE}</h1>

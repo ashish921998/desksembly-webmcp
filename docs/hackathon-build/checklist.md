@@ -48,7 +48,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
   Acceptance: Domain commands are the only business-state writers; successful mutations increment `sceneVersion` once; stale calls fail; locked items cannot move; invalid anchors/budgets/markets fail with safe codes; review digests are stable and change for every material cart/scene change; reset never clears real cart state.
   Verify: Run `npm run test:unit -- domain`; require coverage for stale concurrency, cancellation rollback, locked conflicts, digest stability, approval expiry/consumption, and constraint shock; run `npm run typecheck`; commit as `feat: add versioned scene domain`.
 
-- [ ] **5. Implement live and deterministic commerce gateways**
+- [x] **5. Implement live and deterministic commerce gateways**
   Spec ref: `spec.md > CommerceGateway`, `Constraint And Placement Rules`, `Risks And Verification > Risk 4`
   What to build: Implement the shared `CommerceGateway`; add Hydrogen normalization for exact variants, market-aware price/availability, cart reads, cart results, and checkout URL; add deterministic mock products/carts matching the same types; seed 6–12 desk products with roles and simple dimensions; include fixtures for unavailable variant, price change, and partial cart failure. Do not expose duplicate custom catalog/cart WebMCP tools.
   Acceptance: Both gateways satisfy the same contract; normalized data contains only required safe fields; server tokens stay server-side; India market and budget validation work; mock mode is visibly labeled and cannot masquerade as Shopify; product roles cover one 3–5 item desk setup around the locked orange lamp.

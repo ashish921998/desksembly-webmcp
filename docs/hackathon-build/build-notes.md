@@ -109,3 +109,13 @@
 - Implemented the shared command layer for scene reads, plan preview, transactional stage, move, lock, remove, exact review, approval/consumption, authoritative cart reconciliation, and scene reset that preserves cart truth. Commerce and animation remain behind injected ports.
 - Domain tests cover version increments, stale calls, locked moves, invalid anchors, budget and market conflicts, cancellation rollback, digest stability/material changes, approval expiry/one-time consumption, the 120 cm → 90 cm constraint shock, safe public errors, and cart-preserving reset.
 - Verified `npm run test:unit -- domain` (10 passing tests including the shell unit), `npm run typecheck`, lint with no warnings, and the production build.
+
+## Build — Item 5
+
+- Added the shared `CommerceGateway` contract and safe cart/product result types without registering any custom catalog, cart, or checkout WebMCP tools.
+- Implemented a Hydrogen gateway over the pinned typed Storefront client, request-context market boundary, a compact exact-variant query, allowlisted role/dimension metadata, safe text normalization, and injected authoritative cart operations.
+- Implemented a visibly labeled deterministic gateway and nine desk fixtures covering lamp, display, input, audio, organization, and decor roles. Added explicit unavailable-variant, price-change, and partial-cart-failure fixtures.
+- Added a top-level deterministic-commerce banner whenever the server resolves `mock.shop`, so fallback state cannot be mistaken for a participant development store.
+- Live normalization verification queried tokenless Shopify-hosted `mock.shop` through Hydrogen and validated the result against the same strict Zod product contract used by the deterministic gateway.
+- Verified India-market catalog coverage and a valid under-₹30,000 domain proposal, plus unavailable and partial cart behavior.
+- Ran `npm run test:integration -- commerce-gateway` (7 integration tests passing), the full 17-test Vitest suite, typecheck, lint, and production build. A build with a synthetic private-token sentinel contained no sentinel in `.next/static`.
