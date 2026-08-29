@@ -28,7 +28,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
   Acceptance: The app renders a responsive empty shell over HTTPS; generated Shopify routes build; secrets are absent from tracked files; repository and license are ready for a later public push; Vercel deployment returns a successful page.
   Verify: Run `npm run typecheck`, `npm test -- --run`, and `npm run build`; inspect `git status --short`; open the deployed URL on desktop and mobile widths; commit as `chore: scaffold hydrogen storefront`.
 
-- [ ] **2. Prove native Shopify WebMCP and project-tool coexistence**
+- [x] **2. Prove native Shopify WebMCP and project-tool coexistence**
   Spec ref: `spec.md > WebMCP Integration > Initialization`, `Risks And Verification > Risk 1`, `Risk 2`
   What to build: Feature-detect `document.modelContext`; add the target typings; implement development-only tool audit; register one prefixed `deskbuilder.echo` spike through an AbortController-owned lifecycle; enumerate tools in the exact target Chromium/ChatGPT environment; prove Shopify's native catalog/product/cart tools and the custom tool coexist with unique names; capture the actual injected tool list and browser/Hydrogen versions in `docs/integration-evidence.md`.
   Acceptance: A compatible live page exposes both Shopify native tools and `deskbuilder.echo`; the echo tool can be invoked; cleanup unregisters it without leaks; unsupported browsers display a non-blocking compatibility state; no duplicate names exist.

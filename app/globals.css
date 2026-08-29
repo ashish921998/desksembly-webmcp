@@ -115,6 +115,24 @@ a {
   box-shadow: 0 0 0 5px rgba(31, 122, 80, 0.12);
 }
 
+.shell__status[data-state="unsupported"] {
+  background: #fff4df;
+}
+
+.shell__status[data-state="unsupported"] span {
+  background: #b7651c;
+  box-shadow: 0 0 0 5px rgba(183, 101, 28, 0.12);
+}
+
+.shell__status[data-state="error"] {
+  background: #fff0ed;
+}
+
+.shell__status[data-state="error"] span {
+  background: #b74632;
+  box-shadow: 0 0 0 5px rgba(183, 70, 50, 0.12);
+}
+
 .shell__preview {
   min-height: 620px;
   padding: clamp(26px, 5vw, 54px);

@@ -1,4 +1,5 @@
 import { SHELL_DESCRIPTION, SHELL_TITLE } from "@/src/experience/shell-copy";
+import { AgentReadinessBadge } from "@/src/experience/AgentReadinessBadge";
 
 export default function Home() {
   return (
@@ -7,10 +8,7 @@ export default function Home() {
         <p className="shell__eyebrow">Shopify × WebMCP proof of concept</p>
         <h1 id="shell-title">{SHELL_TITLE}</h1>
         <p className="shell__lede">{SHELL_DESCRIPTION}</p>
-        <div className="shell__status" role="status">
-          <span aria-hidden="true" />
-          Storefront foundation online
-        </div>
+        <AgentReadinessBadge />
       </section>
 
       <section className="shell__preview" aria-label="Upcoming miniature desk world">

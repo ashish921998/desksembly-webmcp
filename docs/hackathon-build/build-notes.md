@@ -70,3 +70,14 @@
 - Verified the shell in the in-app browser at 1440×900 and 390×844: correct title/heading, aligned desktop columns, stacked mobile cards, no horizontal overflow, and no browser console errors.
 - Deployed the shell to `https://devp-one.vercel.app`; HTTPS returned 200 with `Origin-Agent-Cluster: ?1`, Vercel HSTS, and `powered-by: Shopify, Hydrogen`. Desktop and mobile deployment smoke checks passed.
 - The production page already exposes Shopify's native tool family through `ShopifyScripts`; coexistence and invocation remain deliberately unverified until Item 2 adds the isolated `deskbuilder.echo` spike.
+
+## Build — Item 2
+
+- Added `webmcp-types@0.1.5`, a local `executeTool` typing gap, feature detection, exact project naming, duplicate audit, and one AbortController-owned `deskbuilder.echo` spike.
+- Added a non-blocking agent-readiness badge. Supported clients report the Shopify/custom coexistence state; unsupported clients retain the usable shell and report `Agent tools unavailable · manual shell remains`.
+- Verified `npm run test:integration -- webmcp-coexistence`: native and prefixed tools coexist, the echo result is stable, duplicates are rejected, and abort cleanup unregisters the project tool.
+- Verified the unsupported-browser state with Playwright in ordinary headless Chromium and ran final typecheck, lint, and production build successfully.
+- Deployed the final spike to `https://devp-one.vercel.app`. The Codex in-app browser exposed eleven current Shopify native tools plus exactly one `deskbuilder.echo`, with no duplicate names.
+- Called `deskbuilder.echo` successfully and called Shopify `search_catalog` plus `get_cart`; the latter returned the expected empty mock cart. Navigating away removed the custom tool, and returning registered exactly one instance.
+- Integration finding: the judged in-app runtime omitted the tool callback-options object even though the 2026-08-26 draft marks it required. The adapter now tolerates omission while honoring `AbortSignal` when present; this compatibility behavior is covered by the integration test.
+- Sanitized tool inventory, call results, versions, cleanup/fallback checks, and screenshot are recorded in `docs/integration-evidence.md` and `docs/evidence/webmcp-coexistence.png`.
