@@ -100,3 +100,12 @@
 - Updated `vitest.config.ts` to exclude `tests/e2e/**` while preserving Vitest's default exclusions.
 - Reran typecheck, the aggregate Vitest suite, integration tests, Playwright E2E, lint, and production build with fail-fast execution. All passed: 5 Vitest tests, 4 integration assertions, and 1 Playwright journey.
 - Rechecked `https://devp-one.vercel.app`: HTTPS 200, origin-keying and HSTS headers present, `deskbuilder.echo` successful, authoritative Shopify cart unchanged across an unapproved call, `REVIEW_REQUIRED` visible, and no browser console errors.
+
+## Build — Item 4
+
+- Removed the temporary `deskbuilder.echo` registration while preserving the capability detector and collision audit for the production tool registry in Item 7.
+- Pinned the proven Hydrogen preview to `2026.10.0-preview.1`, WebMCP types to `0.1.5`, and added exact Zod `4.5.2` and Zustand `5.0.15` dependencies with the lockfile updated.
+- Implemented canonical domain types and strict schemas, safe error codes, stable JSON/SHA-256 digests, seven semantic desk anchors, deterministic role/footprint placement, market/tag/budget/item-count validation, a vanilla Zustand store, selectors, and the locked orange-lamp initial state.
+- Implemented the shared command layer for scene reads, plan preview, transactional stage, move, lock, remove, exact review, approval/consumption, authoritative cart reconciliation, and scene reset that preserves cart truth. Commerce and animation remain behind injected ports.
+- Domain tests cover version increments, stale calls, locked moves, invalid anchors, budget and market conflicts, cancellation rollback, digest stability/material changes, approval expiry/one-time consumption, the 120 cm → 90 cm constraint shock, safe public errors, and cart-preserving reset.
+- Verified `npm run test:unit -- domain` (10 passing tests including the shell unit), `npm run typecheck`, lint with no warnings, and the production build.

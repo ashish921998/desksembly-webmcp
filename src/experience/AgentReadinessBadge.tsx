@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { getModelContext, type WebMcpCapability } from "@/src/webmcp/capability";
-import { registerEchoTool } from "@/src/webmcp/register-echo";
+import { auditToolNames } from "@/src/webmcp/tool-audit";
 
 const LABELS: Record<WebMcpCapability, string> = {
   checking: "Checking browser-agent support",
-  supported: "Agent-ready · Shopify + deskbuilder.echo",
+  supported: "Agent-ready · Shopify runtime detected",
   unsupported: "Agent tools unavailable · manual shell remains",
   error: "Agent tool audit failed · manual shell remains",
 };
@@ -21,10 +21,9 @@ export function AgentReadinessBadge() {
       return () => window.clearTimeout(timeout);
     }
 
-    const controller = new AbortController();
     let active = true;
 
-    registerEchoTool(modelContext, controller)
+    auditToolNames(modelContext)
       .then((audit) => {
         if (!active) return;
         window.__deskbuilderToolAudit = audit;
@@ -34,16 +33,13 @@ export function AgentReadinessBadge() {
         setCapability("supported");
       })
       .catch((error: unknown) => {
-        if (!active || (error instanceof DOMException && error.name === "AbortError")) {
-          return;
-        }
+        if (!active) return;
         console.error("[deskbuilder] WebMCP registration failed", error);
         setCapability("error");
       });
 
     return () => {
       active = false;
-      controller.abort();
       delete window.__deskbuilderToolAudit;
     };
   }, []);

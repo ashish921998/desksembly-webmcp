@@ -42,7 +42,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
 
   **Visual pause 1:** Stop the fresh implementation task here. Show the user the deployed shell, the combined Shopify/custom tool list, one rejected unapproved cart call, and one approved real cart update. Continue only after the user confirms the integration foundation is acceptable.
 
-- [ ] **4. Freeze dependencies and implement the versioned domain core**
+- [x] **4. Freeze dependencies and implement the versioned domain core**
   Spec ref: `spec.md > Domain Model`, `Domain Commands`, `Architecture invariants`
   What to build: Remove the echo spike; pin the working Hydrogen preview/browser assumptions and commit the lockfile; implement domain types, Zod schemas, error codes, canonical serialization/digests, fixed anchor catalog, deterministic constraint/placement rules, Zustand scene store, selectors, and commands for get scene, preview, stage-state commit, move, lock, remove, review, approve, reconcile, and reset. Keep animation and commerce behind interfaces/fakes.
   Acceptance: Domain commands are the only business-state writers; successful mutations increment `sceneVersion` once; stale calls fail; locked items cannot move; invalid anchors/budgets/markets fail with safe codes; review digests are stable and change for every material cart/scene change; reset never clears real cart state.
