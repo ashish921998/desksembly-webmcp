@@ -269,6 +269,7 @@ describe("versioned scene domain", () => {
   it("resets the scene without clearing authoritative cart state", () => {
     updateDomainState((state) => ({
       ...state,
+      reducedMotion: true,
       cartSnapshot: {
         id: "cart-1",
         lines: [{ merchandiseId: display.merchandiseId, quantity: 1 }],
@@ -278,6 +279,7 @@ describe("versioned scene domain", () => {
     }));
     resetWorld();
     expect(sceneStore.getState().cartSnapshot?.id).toBe("cart-1");
+    expect(sceneStore.getState().reducedMotion).toBe(true);
     expect(getScene().items).toHaveLength(1);
     expect(getScene().items[0].locked).toBe(true);
   });

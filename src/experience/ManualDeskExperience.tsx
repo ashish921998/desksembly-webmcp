@@ -7,6 +7,7 @@ import { moveProduct } from "@/src/domain/commands/move-product";
 import { lockProduct } from "@/src/domain/commands/lock-product";
 import { removeProduct } from "@/src/domain/commands/remove-product";
 import { resetWorld } from "@/src/domain/commands/reset-world";
+import { setReducedMotionPreference } from "@/src/domain/commands/set-reduced-motion";
 import { DomainError } from "@/src/domain/errors";
 import { useSceneState } from "@/src/domain/scene-react";
 import { selectItems, selectTotal } from "@/src/domain/selectors";
@@ -14,11 +15,16 @@ import { MOCK_DESK_PRODUCTS } from "@/src/commerce/mock-catalog";
 import { MockCommerceGateway } from "@/src/commerce/mock-gateway";
 import { DESK_ANCHORS } from "@/src/world/anchors";
 import { DeskCanvas } from "@/src/world/DeskCanvas";
+import { worldAnimationController } from "@/src/world/animation/WorldAnimationController";
+import { useWorldAnimation } from "@/src/world/animation/use-world-animation";
+import { StarterPrompt } from "@/src/experience/StarterPrompt";
+import { ActivityRibbon } from "@/src/experience/ActivityRibbon";
 
 const manualGateway = new MockCommerceGateway();
 
 export function ManualDeskExperience() {
   const state = useSceneState();
+  const animation = useWorldAnimation();
   const items = useMemo(() => selectItems(state), [state]);
   const total = useMemo(() => selectTotal(state), [state]);
   const [selectedItemId, setSelectedItemId] = useState<string | null>("lamp-orange");
@@ -67,7 +73,7 @@ export function ManualDeskExperience() {
         expectedSceneVersion: state.sceneVersion + 1,
         proposalId: proposal.proposalId,
         proposalDigest: proposal.digest,
-      });
+      }, { animation: worldAnimationController });
       setMessage("Manual sample placed through the versioned domain commands.");
     } catch (error) {
       report(error);
@@ -158,8 +164,17 @@ export function ManualDeskExperience() {
           <span>{state.constraints.market} market</span>
           <span>{state.constraints.deskWidthCm} cm desk</span>
           <span>{total.currencyCode} {total.amount} / {state.constraints.budget.amount}</span>
+          <button
+            aria-pressed={state.reducedMotion}
+            onClick={() => setReducedMotionPreference(!state.reducedMotion)}
+          >
+            {state.reducedMotion ? "Reduced motion on" : "Use reduced motion"}
+          </button>
         </div>
       </header>
+
+      <StarterPrompt />
+      <ActivityRibbon />
 
       <div className="manual-world__layout">
         <DeskCanvas
@@ -167,6 +182,7 @@ export function ManualDeskExperience() {
           selectedItemId={selectedItemId}
           onSelect={setSelectedItemId}
           onPointerDrag={moveNext}
+          parcels={animation.parcels}
         />
 
         <aside className="world-inspector" aria-label="Product inspector">

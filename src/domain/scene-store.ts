@@ -46,6 +46,7 @@ export function createInitialLamp(): SceneItem {
 export function createInitialSceneState(options?: {
   sceneVersion?: number;
   cartSnapshot?: SceneStoreState["cartSnapshot"];
+  reducedMotion?: boolean;
 }): SceneStoreState {
   const lamp = createInitialLamp();
   return {
@@ -59,7 +60,7 @@ export function createInitialSceneState(options?: {
     activityReceipts: [],
     cartSnapshot: options?.cartSnapshot ?? null,
     selectedItemId: null,
-    reducedMotion: false,
+    reducedMotion: options?.reducedMotion ?? false,
     webMcpCapability: "checking",
     lastStableSnapshot: null,
   };

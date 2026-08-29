@@ -5,17 +5,21 @@ import { OrbitControls } from "@react-three/drei";
 import type { SceneItem } from "@/src/domain/types";
 import { DeskEnvironment } from "@/src/world/DeskEnvironment";
 import { SceneProduct } from "@/src/world/SceneProduct";
+import { Parcel } from "@/src/world/Parcel";
+import type { ParcelVisual } from "@/src/world/animation/WorldAnimationController";
 
 export function DeskCanvas({
   items,
   selectedItemId,
   onSelect,
   onPointerDrag,
+  parcels = [],
 }: {
   items: SceneItem[];
   selectedItemId: string | null;
   onSelect: (itemId: string) => void;
   onPointerDrag: (itemId: string) => void;
+  parcels?: ParcelVisual[];
 }) {
   return (
     <div
@@ -23,7 +27,7 @@ export function DeskCanvas({
       role="img"
       aria-label="Isometric miniature desk with directly manipulable products"
     >
-      <Canvas shadows camera={{ position: [5.8, 4.2, 6.2], fov: 38 }}>
+      <Canvas camera={{ position: [5.8, 4.2, 6.2], fov: 38 }}>
         <color attach="background" args={["#e8eee7"]} />
         <ambientLight intensity={1.3} />
         <directionalLight position={[4, 7, 5]} intensity={2.2} castShadow />
@@ -36,6 +40,9 @@ export function DeskCanvas({
             onSelect={() => onSelect(item.id)}
             onPointerDrag={() => onPointerDrag(item.id)}
           />
+        ))}
+        {parcels.map((parcel) => (
+          <Parcel key={parcel.id} parcel={parcel} />
         ))}
         <OrbitControls
           target={[0, 0.25, 0]}

@@ -25,9 +25,9 @@ function ProductGeometry({ item }: { item: SceneItem }) {
           <cylinderGeometry args={[0.045, 0.055, 1.05, 16]} />
           <meshStandardMaterial color={color} />
         </mesh>
-        <mesh position={[0.16, 1.12, 0]} rotation={[0, 0, -0.38]} castShadow>
-          <coneGeometry args={[0.34, 0.48, 24, 1, true]} />
-          <meshStandardMaterial color={color} side={2} />
+        <mesh position={[0.2, 1.12, 0]} rotation={[0, 0, -0.38]} castShadow>
+          <coneGeometry args={[0.42, 0.56, 24]} />
+          <meshStandardMaterial color={color} emissive="#ff7a1a" emissiveIntensity={0.18} />
         </mesh>
       </group>
     );

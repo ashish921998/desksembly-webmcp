@@ -138,3 +138,15 @@
 - The first live preview exposed a misleading current-scene total in the result even though validation used the proposal total. Corrected the adapter to report locked-plus-proposed prices and added a regression assertion for INR 23,096.
 - Deployed and manually invoked every project tool in the Codex in-app browser, including malformed and stale cases. The final live sequence advanced versions `0 → 1 → 2 → 3`, produced four exact review lines, retained Shopify native tools, and logged no browser errors.
 - Verified `npm run test:integration -- webmcp-tools` (10 integration tests), `npm run test:evals -- direct` (2 evals), typecheck, lint, and production build.
+
+## Build — Item 8
+
+- Added exact GSAP and Motion dependencies, an external animation transaction store, and a single active `WorldAnimationController` shared by UI and WebMCP stage/move commands.
+- Implemented one-at-a-time parcel arrival, opening lid, product reveal, anchor placement, package cleanup, product labels, pending/success/error activity receipts, cancellation cleanup, and a short reduced-motion sequence.
+- Added the exact starter prompt, copy control, clearly labeled deterministic replay, cancel control, activity ribbon, reduced-motion toggle, and animated parcels inside the same R3F canvas. The deterministic flow never calls cart actions.
+- Added E2E coverage for mid-animation cancellation, stable rollback, retry, package cleanup, four-item canvas/list agreement, activity receipts, and reduced-motion completion. Added the build prompt eval requiring Shopify discovery followed by `get_scene → preview_plan → stage_plan`, with no cart tool.
+- Live target-browser verification called Shopify `search_catalog("slides")`, then the project scene chain. The WebMCP stage advanced to scene version 2 with INR 23,096 total, three successful activity receipts, four accessible scene items, and no cart change.
+- Captured a real parcel-opening state and the completed desk in `docs/evidence/animated-stage.png` and `docs/evidence/animated-desk.png`.
+- Target cancellation/retry surfaced that `resetWorld()` cleared reduced-motion preference when a cancelled proposal existed. Preserved that accessibility preference across reset and added a domain regression assertion. The final deployed reduced retry completed in 338 ms with no browser errors.
+- Limitation remains explicit: without development-store credentials, Shopify native discovery and the deterministic desk fixture catalog are separate adjacent proofs. The UI and evidence do not represent the fixture products as Shopify search results.
+- Verified the full 24-test Vitest suite, `npm run test:e2e -- stage-plan` (3 E2E journeys), `npm run test:evals -- build` (4 evals), typecheck, lint, production build, and final Vercel deployment.

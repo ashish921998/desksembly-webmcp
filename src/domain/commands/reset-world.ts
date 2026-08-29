@@ -6,6 +6,7 @@ export function resetWorld() {
     createInitialSceneState({
       sceneVersion: current.sceneVersion + 1,
       cartSnapshot: structuredClone(current.cartSnapshot),
+      reducedMotion: current.reducedMotion,
     }),
   );
   return { sceneVersion: sceneStore.getState().sceneVersion };

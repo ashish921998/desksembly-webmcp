@@ -66,7 +66,7 @@ The shopper manually moves or locks a product, then gives a late desk-width, bud
   Acceptance: Tool names and descriptions are unambiguous; read-only/untrusted hints match behavior; malformed inputs fail; preview/stage/move require current versions; product reason text cannot execute instructions; callbacks resolve only after visible state is stable; registration cleans up; target agent selects correct tool families for direct prompts.
   Verify: Run `npm run test:integration -- webmcp-tools` and `npm run test:evals -- direct`; manually invoke every project tool in target browser, including malformed and stale inputs; run `npm run build`; commit as `feat: expose miniature world through webmcp`.
 
-- [ ] **8. Complete the first animated agent-built desk workflow**
+- [x] **8. Complete the first animated agent-built desk workflow**
   Spec ref: `spec.md > Animation Architecture`, `Most Important Data Flow > Initial agent-built world`, `prd.md > Epic 2`, `Epic 3`
   What to build: Implement the activity ribbon and animation controller; add cancellable parcel arrival, open, reveal, anchor placement, proposal/confirmed visual states, one-at-a-time sequencing, rollback, package cleanup, labels, and reduced-motion alternative; connect the starter prompt flow to Shopify native product discovery plus project preview/stage tools; deliver one complete 3–5 product desk setup.
   Acceptance: From the documented prompt, the browser agent selects exact Shopify variants, creates a visible proposal, and stages a coherent setup; packages do not obstruct the final world; activity stages reflect real results; cancellation restores the prior stable scene; no cart change occurs; reduced-motion mode communicates the same state without long movement.

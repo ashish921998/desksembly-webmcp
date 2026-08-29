@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getModelContext, type WebMcpCapability } from "@/src/webmcp/capability";
 import { registerDeskBuilderTools } from "@/src/webmcp/register-tools";
 import { MockCommerceGateway } from "@/src/commerce/mock-gateway";
+import { worldAnimationController } from "@/src/world/animation/WorldAnimationController";
 
 const registryGateway = new MockCommerceGateway();
 
@@ -27,7 +28,10 @@ export function AgentReadinessBadge() {
     const controller = new AbortController();
     let active = true;
 
-    registerDeskBuilderTools(modelContext, controller, { catalog: registryGateway })
+    registerDeskBuilderTools(modelContext, controller, {
+      catalog: registryGateway,
+      animation: worldAnimationController,
+    })
       .then((audit) => {
         if (!active) return;
         window.__deskbuilderToolAudit = audit;

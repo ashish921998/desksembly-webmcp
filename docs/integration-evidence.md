@@ -141,3 +141,33 @@ Live target-browser execution verified:
 
 No duplicate names or browser console errors were present. The tool inventory
 contains no project-owned catalog, cart, or checkout aliases.
+
+## Item 8 — animated starter desk workflow
+
+The target in-app browser executed Shopify `search_catalog("slides")` first and
+received one live `mock.shop` product, then ran the project-owned scene chain:
+
+```text
+deskbuilder.get_scene
+deskbuilder.preview_plan
+deskbuilder.stage_plan
+```
+
+The page showed one parcel at a time through arriving, opening, revealed, and
+placing states. The activity ribbon settled with three successful receipts,
+the accessible list matched the four confirmed canvas items, transient packages
+were removed, and Shopify `get_cart` was byte-for-byte unchanged before and
+after staging.
+
+Cancellation in the target browser cleared the active parcel and preserved the
+single locked lamp. The reduced-motion retry completed in 338 ms with the same
+four-item result and no browser errors.
+
+Because no participant development-store credentials are connected, Shopify
+discovery and the deterministic desk catalog are adjacent proof paths rather
+than one shared merchant catalog. The page labels the deterministic replay and
+does not claim that its fixture variants came from `mock.shop` search results.
+
+![Parcel opening during the staged desk workflow](evidence/animated-stage.png)
+
+![Completed desk, activity receipts, and accessible scene list](evidence/animated-desk.png)
