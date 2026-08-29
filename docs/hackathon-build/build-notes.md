@@ -159,3 +159,4 @@
 - Repriced the nine deterministic desk fixtures in USD, changed the default market/runtime context to `US`, and updated domain, gateway, WebMCP, prompt, eval, and E2E expectations. The core staged setup is now $266.
 - Historical build notes and evidence retain their original INR results as an audit trail; all active product behavior and forward-looking requirements now use US/USD.
 - Reran the full 24-test suite, 3 E2E journeys, 4 evals, typecheck, lint, and production build successfully.
+- Deployed the US revision to `https://devp-one.vercel.app` and verified through the target browser: `market=US`, `$350` starter budget, `$266` staged total, four scene items, and zero browser errors. Refreshed both animation evidence screenshots so the visible prompt, badges, and prices match US/USD.

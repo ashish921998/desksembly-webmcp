@@ -187,3 +187,8 @@ Current four-item staged total: $266
 
 This revision uses round product-demo budgets and does not claim to be an
 exchange-rate conversion.
+
+The final deployed target-browser check returned `market: US`, budget
+`USD 350.00`, and a four-item staged total of `USD 266.00` with no console
+errors. The Item 8 screenshots were refreshed after deployment and now show
+the US prompt and USD amounts.
